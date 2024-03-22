@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WebAnhAnh.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<ShopShopContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ShopShop"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
