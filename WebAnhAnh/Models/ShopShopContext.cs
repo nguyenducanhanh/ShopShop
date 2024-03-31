@@ -29,9 +29,9 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Data Source=MACBOOK\\SQLEXPRESS;Initial Catalog=ShopShop;Persist Security Info=True;User ID=sa;Password=12345;Trust Server Certificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=MACBOOK\\SQLEXPRESS;Initial Catalog=ShopShop;Persist Security Info=True;User ID=sa;Password=12345;Encrypt=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,9 +39,7 @@ public partial class ShopShopContext : DbContext
         {
             entity.ToTable("Category");
 
-            entity.Property(e => e.CategoryId)
-                .ValueGeneratedNever()
-                .HasColumnName("CategoryID");
+            entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(50);
             entity.Property(e => e.Image).HasMaxLength(50);
         });
@@ -66,9 +64,7 @@ public partial class ShopShopContext : DbContext
         {
             entity.ToTable("Order");
 
-            entity.Property(e => e.OrderId)
-                .ValueGeneratedNever()
-                .HasColumnName("OrderID");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.Address).HasMaxLength(50);
             entity.Property(e => e.CustomerId)
                 .HasMaxLength(20)
@@ -96,9 +92,7 @@ public partial class ShopShopContext : DbContext
 
             entity.ToTable("OrderDetailID");
 
-            entity.Property(e => e.OrderDetailId1)
-                .ValueGeneratedNever()
-                .HasColumnName("OrderDetailID");
+            entity.Property(e => e.OrderDetailId1).HasColumnName("OrderDetailID");
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
@@ -108,16 +102,14 @@ public partial class ShopShopContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetailIds)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK_OrderDetailID_Product");
+                .HasConstraintName("FK_OrderDetailID_Product1");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
             entity.ToTable("Product");
 
-            entity.Property(e => e.ProductId)
-                .ValueGeneratedNever()
-                .HasColumnName("ProductID");
+            entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.DateOfManufacture).HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(50);
@@ -139,9 +131,7 @@ public partial class ShopShopContext : DbContext
         {
             entity.ToTable("Status");
 
-            entity.Property(e => e.StatusId)
-                .ValueGeneratedNever()
-                .HasColumnName("StatusID");
+            entity.Property(e => e.StatusId).HasColumnName("StatusID");
             entity.Property(e => e.Describe).HasMaxLength(500);
             entity.Property(e => e.StatusName).HasMaxLength(50);
         });

@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\WebAnhAnh.bundle.scp.css"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\cs\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\cs\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\cs\\site.css",
+      "PackagePath": "staticwebassets\\cs\\site.css"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\cs\\style.css",
+      "PackagePath": "staticwebassets\\cs\\style.css"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\css\\animate.min.css",
       "PackagePath": "staticwebassets\\css\\animate.min.css"
     },
@@ -101,10 +113,6 @@
       "PackagePath": "staticwebassets\\css\\responsive.css"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\css\\slick.css",
       "PackagePath": "staticwebassets\\css\\slick.css"
     },
@@ -115,6 +123,46 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\001.png",
+      "PackagePath": "staticwebassets\\images\\001.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\002.png",
+      "PackagePath": "staticwebassets\\images\\002.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\003.png",
+      "PackagePath": "staticwebassets\\images\\003.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702483958644.jpg",
+      "PackagePath": "staticwebassets\\images\\1702483958644.jpg"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702487424944.jpg",
+      "PackagePath": "staticwebassets\\images\\1702487424944.jpg"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702700558506.jpg",
+      "PackagePath": "staticwebassets\\images\\1702700558506.jpg"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702736651437.png",
+      "PackagePath": "staticwebassets\\images\\1702736651437.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702736687263.png",
+      "PackagePath": "staticwebassets\\images\\1702736687263.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702737544402.png",
+      "PackagePath": "staticwebassets\\images\\1702737544402.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\anhnenkk.jpg",
+      "PackagePath": "staticwebassets\\images\\anhnenkk.jpg"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\background-bg.png",
@@ -287,10 +335,6 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\js\\popper.min.js",
       "PackagePath": "staticwebassets\\js\\popper.min.js"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\js\\slider-setting.js",

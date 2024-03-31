@@ -1,0 +1,75 @@
+﻿
+
+    <div class="header_main">
+@*         Xử lý giao diện điện thoại *@
+          <div class="mobile_menu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="logo_mobile"><a href="index.html"><img src="~/images/logo.png"></a></div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " asp-controller="Product" asp-action="Index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " asp-controller="Customer" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link " asp-controller="Customer" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                        <a data-bs-toggle="modal" data-bs-target="#searchModalll" class="nav-link " href="#"><img src="~/images/search-icon.png"></a>
+                      
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div class="logo"><a href="index.html"><img src="~/images/logo.png"></a></div>
+            <div class="menu_main">
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a asp-controller="Product" asp-action="Index" >Products</a></li>
+                <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li>
+                <li><a asp-controller="Customer" asp-action="Login">login</a></li>
+                <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li>
+                <li><a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a></li>
+                @await Component.InvokeAsync("Cart")
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Search Start -->
+
+<div class="modal fade" id="searchModalll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search by products</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="SearchForm" asp-action="Search" asp-controller="Product">
+                <div class="input-group w-100 mx-auto d-flex">
+                    <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="searchButton" name="query" id="searchText">
+                    <span id="searchButton" class="input-group-text p-3" onclick="SearchForm.submit()"><img src="~/images/search-icon.png"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+<!-- Modal Search End -->
+<!-- JavaScript Libraries -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

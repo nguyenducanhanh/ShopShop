@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebAnhAnh.Repository.MenuCategoryRepository>
+
+ 
+
+<style>
+    .navbar {
+        background-color: black; /* Màu nền đen cho thanh menu */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        border-radius: 20px; /* Border tròn */
+        margin: 0 10px; /* Khoảng cách giữa các menu */
+        transition: background-color 0.3s; /* Hiệu ứng khi hover */
+    }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            background-color: red; /* Màu nền khi hover */
+        }
+</style>
+
+              
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+       
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                @foreach (var item in Model)
+                {
+                    <li class="nav-item">
+
+                        <a style="font-size:20px;color:gray" asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link">@item.CategoryName (@item.Quantity)</a>
+
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+

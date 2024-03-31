@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_LayoutProducts";
+}
+
+<h1>Search</h1>
+
+
+
+<div class="background_bg">
+    <div class="about_section layout_padding">
+        <div class="container">
+            <h2 class="watchs_taital">
+                @await Component.InvokeAsync("MenuCategory")
+                <br>About Shop
+            </h2>
+
+            <div class="about_section_3">
+                <div class="row">
+                    @await Html.PartialAsync("ItemProducts", Model)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

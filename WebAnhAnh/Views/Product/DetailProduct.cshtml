@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "DetailProduct";
+    Layout = "_LayoutProducts";
+}
+@model WebAnhAnh.Repository.DetailProductsRepository
+
+
+
+<style>
+    .quantity {
+        display: flex;
+        align-items: center;
+    }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            padding: 5px;
+            margin: 0 5px;
+        }
+
+        .quantity button {
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 3px;
+        }
+
+            .quantity button:hover {
+                background-color: #45a049;
+            }
+</style>
+
+
+<!-- background bg start -->
+<div class="background_bg">
+    <h2 class="watchs_taital">       </h2>
+    <!-- watchs section start -->
+    <div class="watchs_section layout_padding">
+
+        <div class="container">
+            <h1 class="watchs_taital"> @await Component.InvokeAsync("MenuCategory")<br>@Model.ProductName </h1>
+            <br />
+            <div class="watchs_section_2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="image_1"><img style="height:400px" src="~/images/@Model.Image"></div>
+                    </div>
+                    <div style="color:white" class="col-lg-6">
+                        <h2 style="color:white" class="fw-bold mb-3">Product :  @Model.ProductName</h2>
+                        <h2 style="color:white;" class="mb-3">
+                            Category :  @Model.CategoryName</h2>
+                        <h2 class="fw-bold mb-3" style="color:white;">@Model.Price $</h2>
+                        <div style="color:yellow" class="d-flex mb-4">
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star "></i>
+                            <i class="fa fa-star text-secondary"></i>
+                        </div>
+                        <h2 style="color:white;" class="mb-4">@Model.Describe</h2>
+
+                           <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ProductID">
+                        <div class="row" style="margin-left:7px">
+                            <div class="quantity">
+                                    <button type="button" onclick="decreaseQuantity()">-</button>
+                                <input name="quantity" type="number" id="quantityInput" value="1" min="0">
+                                    <button type="button" onclick="increaseQuantity()">+</button>
+                            </div>
+                                <button style="margin-left:100px;margin-top:30px" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
+
+                            </div>
+                        </form>
+                     </div>
+                </div>
+            </div>
+
+            <div class="seemore_bt"><a href="#">See More</a></div>
+        </div>
+    </div>
+    <!-- watchs section end -->
+</div>
+
+
+<script>
+    function increaseQuantity() {
+        var input = document.getElementById("quantityInput");
+        var value = parseInt(input.value);
+        input.value = value + 1;
+    }
+
+    function decreaseQuantity() {
+        var input = document.getElementById("quantityInput");
+        var value = parseInt(input.value);
+        if (value > 0) {
+            input.value = value - 1;
+        }
+    }
+</script>

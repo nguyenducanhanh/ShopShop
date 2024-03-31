@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+	Layout = "_LayoutProducts";
+}
+
+<h1 style="color:white">Profile</h1>
+<div class="container">
+	<h2 style="color:white">Welcome @Context.User.Identity.Name</h2>
+	<a style="color:white" asp-action="Logout">Đăng xuất</a>
+</div>

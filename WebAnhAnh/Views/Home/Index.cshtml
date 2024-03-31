@@ -1,5 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_LayoutHome";
 }
+@model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
+<div class="background_bg">
+    <div class="about_section layout_padding">
+        <div class="container">
+            <h2 class="watchs_taital">
+                @await Component.InvokeAsync("MenuCategory")
+                <br>About Shop 
+            </h2>
+            <div class="about_section_3">
+                <div class="row">
+                   Hiển thị sản phẩm hot 
+                </div>
+            </div>
 
-<h1 style="color:red">NÓ ĐÂY  </h1>
+        </div>
+    </div>
+    <!-- about section end -->
+    <!-- testimonial section start -->
+    <!-- testimonial section end -->
+    <!-- contact section start -->
+    <!-- <div class="contact_section layout_padding">
+       <div class="container">
+          <h1 class="watchs_taital">04<br>Get In Touch</h1>
+       </div>
+       <div class="contact_section_2">
+          <div class="container-fluid">
+             <div class="row">
+                <div class="col-md-6">
+                   <div class="mail_section_1">
+                      <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
+                      <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number">
+                      <input type="text" class="mail_text" placeholder="Email" name="Email">
+                      <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                      <div class="send_bt"><a href="#">SEND</a></div>
+                   </div>
+                </div>
+                <div class="col-md-6 padding_right_0">
+                   <div class="map_section"><img src="~/images/map-img.png"></div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div> -->
+    <!-- contact section end -->
+</div>
