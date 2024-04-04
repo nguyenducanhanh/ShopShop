@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZBXQLqEOO5BlAT7h5oMs6Mr7/G5bxnPpc1ucJ6rjbFe6Grx0XGlsPEzAvXAO8C11wuGhpt66PDZaUSRavdbk1Q==",
+  "dgSpecHash": "uothFezw//+QnmilBh39WENky9EnZTVcZsf+z1zX8gLwsXxBIqeesXGqZsyFPhWXcdhjfewO/F6GSVBZbeIq8w==",
   "success": true,
   "projectFilePath": "E:\\WebAnhAnh\\WebAnhAnh\\WebAnhAnh.csproj",
   "expectedPackageFiles": [
@@ -175,7 +175,10 @@
     "C:\\Users\\bachk\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\bachk\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\bachk\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\bachk\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\bachk\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\bachk\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
+    "C:\\Users\\bachk\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512",
+    "C:\\Users\\bachk\\.nuget\\packages\\x.pagedlist.web.common\\8.0.7\\x.pagedlist.web.common.8.0.7.nupkg.sha512"
   ],
   "logs": []
 }

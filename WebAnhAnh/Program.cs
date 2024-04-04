@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Helpers;
 using WebAnhAnh.Models;
+using WebAnhAnh.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,8 @@ builder.Services.AddSingleton(x => new PaypalClient(
         builder.Configuration["PaypalOptions:AppSecret"],
         builder.Configuration["PaypalOptions:Mode"]
 ));
+
+builder.Services.AddSingleton<IVnPayService, VnPayService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

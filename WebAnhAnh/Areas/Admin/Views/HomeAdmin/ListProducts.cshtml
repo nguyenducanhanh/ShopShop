@@ -1,0 +1,98 @@
+﻿
+@using WebAnhAnh.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.BasePagedList<Product>
+@{
+    ViewData["Title"] = "ListProducts";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>ListProducts</h1>
+
+<p>
+    <a asp-action="ThemSanPhamMoi">Create New</a>
+</p>
+<p>@TempData["Message"]</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                ProductName
+            </th>
+            <th>
+                Price
+            </th>
+            <th style="width:200px">
+              Image
+            </th>
+            <th>
+               Describe
+            </th>
+            <th>
+              Category
+            </th>
+            <th>Choose</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+@foreach (var item in Model) {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+            <tr class="@cls">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <img style="height:80px;width:99px;border-radius:0px;" src="~/images/@item.Image" alt="Image">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Describe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a class="btn btn-primary" asp-action="SuaSanPham" asp-route-id="@item.ProductId">Edit</a>
+                        <form id="deleteForm-@item.ProductId" asp-action="XoaSanPham" asp-route-id="@item.ProductId" method="post">
+                            <button type="button" onclick="confirmDelete(@item.ProductId)" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+
+        </tr>
+}
+      
+    </tbody>
+</table>
+@* @Html.PagedListPager(Model, page => Url.Action("ListProducts", new { page = page }), new X.PagedList.Web.Common.PagedListRenderOptions()
+{
+
+    LiElementClasses = new List<String> { "page-item" },
+    PageClasses = new List<String> { "page-link" }
+}) *@
+
+                <div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("ListProducts", new { page = page }))
+                </div>
+
+
+<script>
+    function confirmDelete(productId) {
+        if (confirm('Are you sure you want to delete this product??')) {
+            document.getElementById('deleteForm-' + productId).submit();
+        }
+    }
+</script>
+

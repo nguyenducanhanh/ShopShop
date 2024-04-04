@@ -559,3 +559,6 @@ E:\WebAnhAnh\WebAnhAnh\obj\Debug\net8.0\WebAnhAnh.MvcApplicationPartsAssemblyInf
 E:\WebAnhAnh\WebAnhAnh\obj\Debug\net8.0\scopedcss\Views\Shared\_LayoutBanner.cshtml.rz.scp.css
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\AutoMapper.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.dll
+E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.Web.Common.dll

@@ -4,17 +4,19 @@ using WebAnhAnh.Models;
 using WebAnhAnh.Helpers;
 using WebAnhAnh.Repository;
 using Microsoft.AspNetCore.Authorization;
+using WebAnhAnh.Services;
 namespace WebAnhAnh.Controllers
 {
 	public class CartController : Controller
 	{
 		private readonly PaypalClient _paypalClient;
 		private readonly ShopShopContext db;
-
-		public CartController(ShopShopContext context, PaypalClient paypalClient)
+		private readonly IVnPayService _vnPayservice;
+		public CartController(ShopShopContext context, PaypalClient paypalClient, IVnPayService vnPayservice)
 		{
 			_paypalClient = paypalClient;
 			db = context;
+			_vnPayservice = vnPayservice;
 		}
 
 		public List<CartRepository> Cart => HttpContext.Session.Get<List<CartRepository>>(Val.CART_KEY) ?? new List<CartRepository>();
@@ -83,10 +85,23 @@ namespace WebAnhAnh.Controllers
 
 		[Authorize]
 		[HttpPost]
-		public IActionResult Checkout(CheckoutRepository model)
+		public IActionResult Checkout(CheckoutRepository model, string payment = "COD")
 		{
 			if (ModelState.IsValid)
 			{
+				if (payment == "Thanh toán VNPay")
+				{
+					var vnPayModel = new VnPaymentRequestModel
+					{
+						Amount = Cart.Sum(p => p.TotalPayment),
+						CreatedDate = DateTime.Now,
+						Description = $"{model.CustomerName} {model.PhoneNumber}",
+						FullName = model.CustomerName,
+						OrderId = new Random().Next(1000, 100000)
+					};
+					return Redirect(_vnPayservice.CreatePaymentUrl(HttpContext, vnPayModel));
+				}
+
 				var customerId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID).Value;
 				var khachHang = new Customer();
 				if (model.GiongKhachHang)
@@ -193,5 +208,28 @@ namespace WebAnhAnh.Controllers
 		}
 
 		#endregion
+		[Authorize]
+		public IActionResult PaymentFail()
+		{
+			return View();
+		}
+
+		[Authorize]
+		public IActionResult PaymentCallBack()
+		{
+			var response = _vnPayservice.PaymentExecute(Request.Query);
+
+			if (response == null || response.VnPayResponseCode != "00")
+			{
+				TempData["Message"] = $"Lỗi thanh toán VN Pay: {response.VnPayResponseCode}";
+				return RedirectToAction("PaymentFail");
+			}
+
+
+			// Lưu đơn hàng vô database
+
+			TempData["Message"] = $"Thanh toán VNPay thành công";
+			return RedirectToAction("PaymentSuccess");
+		}
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAnhAnh.Models;
 
@@ -28,4 +30,5 @@ public partial class Product
     public virtual ICollection<OrderDetailId> OrderDetailIds { get; set; } = new List<OrderDetailId>();
 
     public virtual Supplier? Supplier { get; set; }
+
 }

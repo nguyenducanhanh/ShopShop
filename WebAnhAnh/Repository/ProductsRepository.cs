@@ -1,4 +1,7 @@
-﻿namespace WebAnhAnh.Repository
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebAnhAnh.Repository
 {
     public class ProductsRepository
     {
@@ -8,6 +11,7 @@
         public double Price { get; set; }
         public string Describe { get; set; }
         public string CategoryName { get; set; }
+ 
     }
 
     public class DetailProductsRepository

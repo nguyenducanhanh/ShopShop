@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+   
 }
 
 <h1>Index</h1>
@@ -49,7 +50,8 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                    <img style="height:20px;weight:80px" src="~/images/@item.Image" alt="Image">
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfManufacture)
@@ -61,7 +63,7 @@
                 @Html.DisplayFor(modelItem => item.Describe)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Supplier.SupplierId)
