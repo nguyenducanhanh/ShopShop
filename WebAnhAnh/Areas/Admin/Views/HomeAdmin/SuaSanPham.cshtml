@@ -5,9 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>SuaSanPham</h1>
-
-<h4>Product</h4>
+<h1 style="text-align: center;">SỬA SẢN PHẨM </h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,45 +13,55 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
             <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
+                <label asp-for="ProductName" class="control-label">TÊN SẢN PHẨM</label>
                 <input asp-for="ProductName" class="form-control" />
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
+                <label asp-for="CategoryId" class="control-label">LOẠI SẢN PHẨM</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">GIÁ BÁN</label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label">ẢNH CHÍNH</label>
                 <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Image1" class="control-label">ẢNH PHỤ 1</label>
+                <input type="file" asp-for="Image1" class="form-control" />
+                <span asp-validation-for="Image1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image2" class="control-label">ẢNH PHỤ 2</label>
+                <input type="file" asp-for="Image2" class="form-control" />
+                <span asp-validation-for="Image2" class="text-danger"></span>
+            </div>
+            @*   <div class="form-group">
                 <label asp-for="DateOfManufacture" class="control-label"></label>
                 <input asp-for="DateOfManufacture" class="form-control" />
                 <span asp-validation-for="DateOfManufacture" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class="form-group">
                 <label asp-for="Discount" class="control-label"></label>
                 <input asp-for="Discount" class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
-                <label asp-for="Describe" class="control-label"></label>
+                <label asp-for="Describe" class="control-label">MÔ TẢ</label>
                 <input asp-for="Describe" class="form-control" />
                 <span asp-validation-for="Describe" class="text-danger"></span>
             </div>
-            <div class="form-group">
+        @*     <div class="form-group">
                 <label asp-for="SupplierId" class="control-label"></label>
                 <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
                 <span asp-validation-for="SupplierId" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

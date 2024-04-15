@@ -6,34 +6,44 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<h1>List</h1>
+<h1 style="text-align: center;">DANH SÁCH HÃNG SẢN PHẨM</h1>
 @if (ViewBag.ErrorMessage != null)
 {
     <div class="alert alert-danger">
         @ViewBag.ErrorMessage
     </div>
 }
-<p>
-    <a asp-action="Create">Create New</a>
+
+<p style="text-align: right;">
+    <a class="btn btn-primary" asp-action="Create">THÊM MỚI</a>
 </p>
+
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-warning">
             <th>
-                CategoryName
+                TÊN LOẠI SẢN PHẨM
             </th>
             <th>
-              Describe
+              MÔ TẢ
             </th>
-            <th>
-               Image
-            </th>
-            <th></th>
+
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
 @foreach (var item in Model) {
-        <tr>
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+            <tr class="@cls">
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
@@ -41,22 +51,24 @@
                 @Html.DisplayFor(modelItem => item.Describe)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
-                    <form id="deleteForm-@item.CategoryId" asp-action="Delete" asp-route-id="@item.CategoryId" method="post">
-                        <button type="button" onclick="confirmDelete(@item.CategoryId)">Delete</button>
-                    </form>
+                  
+
+                    <div class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.CategoryId">SỬA</a>
+
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete('@item.CategoryId')">Delete</button>
+                        <form id="deleteForm-@item.CategoryId" asp-action="Delete" asp-route-id="@item.CategoryId" method="post" style="display: none;">
+                        </form>
+                    </div>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<div class="product__pagination">
+@* <div class="product__pagination">
     @Html.PagedListPager(Model, page => Url.Action("List", new { page = page }))
 </div>
+ *@
 
 
 <script>
@@ -66,3 +78,79 @@
         }
     }
 </script>
+
+
+
+<br />
+
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("List", new { page = Model.HasPreviousPage ? Model.PageNumber - 1 : 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int ii = 1; ii <= Model.PageCount; ii++)
+            {
+                <li class="page-item @(ii == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("List", new { page = ii })">@ii</a>
+                </li>
+            }
+            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("List", new { page = Model.HasNextPage ? Model.PageNumber + 1 : Model.PageCount })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+                    <style>
+    .pagination {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+        .pagination li {
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .pagination .page-item {
+            margin: 0 2px;
+        }
+
+            .pagination .page-item.disabled .page-link {
+                color: #6c757d;
+                pointer-events: none;
+                cursor: auto;
+            }
+
+            .pagination .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+        .pagination .page-link {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #007bff;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+            .pagination .page-link:hover {
+                z-index: 2;
+                color: #0056b3;
+                text-decoration: none;
+                background-color: #e9ecef;
+                border-color: #dee2e6;
+            }
+
+                    </style>

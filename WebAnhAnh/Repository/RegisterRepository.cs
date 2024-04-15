@@ -36,7 +36,7 @@ namespace WebAnhAnh.Repository
 
         [EmailAddress(ErrorMessage = "Chưa đúng định dạng email")]
         public string Email { get; set; }
+        public bool? IsAdmin { get; set; }
 
-       
     }
 }

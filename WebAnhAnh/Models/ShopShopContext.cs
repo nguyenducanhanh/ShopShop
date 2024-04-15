@@ -19,15 +19,21 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
+    public virtual DbSet<KhachHang> KhachHangs { get; set; }
+
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetailId> OrderDetailIds { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<Staff> Staff { get; set; }
+
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -58,6 +64,32 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.PassWord).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.RandomKey).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<KhachHang>(entity =>
+        {
+            entity.HasKey(e => e.MaKhanhHang);
+
+            entity.ToTable("KhachHang");
+
+            entity.Property(e => e.MaKhanhHang)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.DiaChi).HasMaxLength(150);
+            entity.Property(e => e.SoDienThoai)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.TenKhachHang).HasMaxLength(100);
+            entity.Property(e => e.UserName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsFixedLength();
+
+            entity.HasOne(d => d.UserNameNavigation).WithMany(p => p.KhachHangs)
+                .HasForeignKey(d => d.UserName)
+                .HasConstraintName("FK_KhachHang_User");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -112,7 +144,10 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.DateOfManufacture).HasColumnType("datetime");
+            entity.Property(e => e.Describe).HasMaxLength(150);
             entity.Property(e => e.Image).HasMaxLength(50);
+            entity.Property(e => e.Image1).HasMaxLength(50);
+            entity.Property(e => e.Image2).HasMaxLength(50);
             entity.Property(e => e.ProductName).HasMaxLength(50);
             entity.Property(e => e.SupplierId)
                 .HasMaxLength(50)
@@ -125,6 +160,27 @@ public partial class ShopShopContext : DbContext
             entity.HasOne(d => d.Supplier).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SupplierId)
                 .HasConstraintName("FK_Product_Supplier");
+        });
+
+        modelBuilder.Entity<Staff>(entity =>
+        {
+            entity.Property(e => e.StaffId)
+                .HasMaxLength(25)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.StaffName).HasMaxLength(100);
+            entity.Property(e => e.UserName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsFixedLength();
+
+            entity.HasOne(d => d.UserNameNavigation).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.UserName)
+                .HasConstraintName("FK_Staff_User");
         });
 
         modelBuilder.Entity<Status>(entity =>
@@ -149,6 +205,22 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Logo).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.UserName);
+
+            entity.ToTable("User");
+
+            entity.Property(e => e.UserName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.Password)
+                .HasMaxLength(256)
+                .IsUnicode(false)
+                .IsFixedLength();
         });
 
         OnModelCreatingPartial(modelBuilder);

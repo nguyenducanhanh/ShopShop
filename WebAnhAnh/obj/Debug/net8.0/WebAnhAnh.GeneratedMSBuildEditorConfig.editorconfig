@@ -62,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbm4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/WebAnhAnh/WebAnhAnh/Views/Access/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/WebAnhAnh/WebAnhAnh/Views/Cart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

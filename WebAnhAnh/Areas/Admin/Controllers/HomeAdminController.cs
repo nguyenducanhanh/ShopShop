@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Models;
@@ -6,7 +7,7 @@ using X.PagedList;
 
 namespace WebAnhAnh.Areas.Admin.Controllers
 {
-
+    [Authorize]
     [Area("admin")]
     [Route("admin")]
     [Route("admin/homeadmin")]
@@ -97,3 +98,6 @@ namespace WebAnhAnh.Areas.Admin.Controllers
 
     }
 }
+
+
+

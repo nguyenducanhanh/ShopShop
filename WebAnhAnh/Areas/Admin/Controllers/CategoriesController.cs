@@ -22,7 +22,6 @@ namespace WebAnhAnh.Areas.Admin.Controllers
             int pageSize = 5;
        int pageNumber = page == null || page < 0 ? 1 : page.Value;
         var sanpham = db.Categories.AsNoTracking().OrderBy(x => x.CategoryName);
-     // var sanpham = db.Categories.Include(p => p.Category).Include(p => p.Supplier);
        PagedList<Category> lst = new PagedList<Category>(sanpham, pageNumber, pageSize);
         return View(lst);
    }

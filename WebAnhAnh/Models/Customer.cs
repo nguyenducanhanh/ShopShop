@@ -25,5 +25,7 @@ public partial class Customer
 
     public string? RandomKey { get; set; }
 
+    public bool? IsAdmin { get; set; }
+
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

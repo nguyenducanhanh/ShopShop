@@ -8,6 +8,8 @@ namespace WebAnhAnh.Repository
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string Image { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
         public double Price { get; set; }
         public string Describe { get; set; }
         public string CategoryName { get; set; }
@@ -19,6 +21,8 @@ namespace WebAnhAnh.Repository
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string Image { get; set; }
+        public string Image1 { get; set; }
+        public string Image2 { get; set; }
         public double Price { get; set; }
         public string Describe { get; set; }
         public string CategoryName { get; set; }

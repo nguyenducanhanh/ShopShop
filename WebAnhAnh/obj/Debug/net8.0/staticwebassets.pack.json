@@ -737,40 +737,36 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\001.png",
-      "PackagePath": "staticwebassets\\images\\001.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\BanAn01.png",
+      "PackagePath": "staticwebassets\\images\\BanAn01.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\002.png",
-      "PackagePath": "staticwebassets\\images\\002.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\BanAn02.png",
+      "PackagePath": "staticwebassets\\images\\BanAn02.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\003.png",
-      "PackagePath": "staticwebassets\\images\\003.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\BanAn03.png",
+      "PackagePath": "staticwebassets\\images\\BanAn03.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702483958644.jpg",
-      "PackagePath": "staticwebassets\\images\\1702483958644.jpg"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\BanHoc.png",
+      "PackagePath": "staticwebassets\\images\\BanHoc.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702487424944.jpg",
-      "PackagePath": "staticwebassets\\images\\1702487424944.jpg"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\Bantrangdiem.png",
+      "PackagePath": "staticwebassets\\images\\Bantrangdiem.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702700558506.jpg",
-      "PackagePath": "staticwebassets\\images\\1702700558506.jpg"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\M1.png",
+      "PackagePath": "staticwebassets\\images\\M1.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702736651437.png",
-      "PackagePath": "staticwebassets\\images\\1702736651437.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\M2.png",
+      "PackagePath": "staticwebassets\\images\\M2.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702736687263.png",
-      "PackagePath": "staticwebassets\\images\\1702736687263.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\1702737544402.png",
-      "PackagePath": "staticwebassets\\images\\1702737544402.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\M3.png",
+      "PackagePath": "staticwebassets\\images\\M3.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\anhnenkk.jpg",
@@ -813,34 +809,6 @@
       "PackagePath": "staticwebassets\\images\\header-bg.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-1.png",
-      "PackagePath": "staticwebassets\\images\\img-1.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-2.png",
-      "PackagePath": "staticwebassets\\images\\img-2.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-3.png",
-      "PackagePath": "staticwebassets\\images\\img-3.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-4.png",
-      "PackagePath": "staticwebassets\\images\\img-4.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-5.png",
-      "PackagePath": "staticwebassets\\images\\img-5.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-6.png",
-      "PackagePath": "staticwebassets\\images\\img-6.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\img-7.png",
-      "PackagePath": "staticwebassets\\images\\img-7.png"
-    },
-    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\instagram-icon.png",
       "PackagePath": "staticwebassets\\images\\instagram-icon.png"
     },
@@ -849,8 +817,8 @@
       "PackagePath": "staticwebassets\\images\\linkedin-icon.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logo.png",
-      "PackagePath": "staticwebassets\\images\\logo.png"
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logon.png",
+      "PackagePath": "staticwebassets\\images\\logon.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\mail-icon.png",
@@ -871,6 +839,10 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\testimonial-bg.png",
       "PackagePath": "staticwebassets\\images\\testimonial-bg.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\tugiay.png",
+      "PackagePath": "staticwebassets\\images\\tugiay.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\twitter-icon.png",

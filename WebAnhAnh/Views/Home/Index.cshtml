@@ -3,47 +3,67 @@
     Layout = "_LayoutHome";
 }
 @model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
-<div class="background_bg">
-    <div class="about_section layout_padding">
+@await Component.InvokeAsync("MenuCategory")
+<!-- background bg start -->
+ <div class="background_bg">
+    <!-- watchs section start -->
+    <div class="watchs_section layout_padding">
         <div class="container">
-            <h2 class="watchs_taital">
-                @await Component.InvokeAsync("MenuCategory")
-                <br>About Shop 
-            </h2>
-            <div class="about_section_3">
+            <h1 class="watchs_taital">Our Products</h1> <br />
+            <div class="watchs_section_2">
                 <div class="row">
-                   Hiển thị sản phẩm hot 
+                    <div class="col-md-6">
+                        <div class="image_1"><img src="images/img-1.png"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="uni_text">Uni Watch</h4>
+                        <p class="watchs_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                        <h4 class="rate_text"><span style="color: #b60213;">$</span>100</h4>
+                        <div class="read_bt1"><a href="#">Buy Now</a></div>
+                    </div>
                 </div>
             </div>
-
+            <div class="watchs_section_3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="uni_text">Uni Watch</h4>
+                        <p class="watchs_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                        <h4 class="rate_text"><span style="color: #b60213;">$</span>100</h4>
+                        <div class="read_bt1"><a href="#">Buy Now</a></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="image_2"><img src="images/img-2.png"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="seemore_bt"><a href="#">See More</a></div>
         </div>
     </div>
-    <!-- about section end -->
+    <!-- watchs section end -->
+    <!-- about section start -->
     <!-- testimonial section start -->
+    <div class="testimonial_section layout_padding">
+        <div class="container">
+            <h1 class="watchs_taital">Testimonial</h1>
+            <div class="testimonial_section_2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box_main">
+                            <p class="testimonial_text">  Ngoài các món đồ nội thất chính, gỗ còn được sử dụng để tạo ra các vật phẩm trang trí như đồng hồ treo tường, đèn trang trí, phụ kiện bàn làm việc, hộp đựng đồ, và nhiều món đồ trang trí khác. Sự tỉ mỉ trong thiết kế và vẻ đẹp tự nhiên của gỗ làm cho những món đồ này trở nên độc đáo và thu hút.</p>
+                        </div>
+                     
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box_main">
+                            <p class="testimonial_text">Bàn ăn, bàn làm việc, ghế sofa, ghế đẩu... Gỗ được sử dụng để tạo ra các món đồ nội thất chính trong mọi không gian sống. Sự ấm áp và tính thẩm mỹ của gỗ giúp tạo điểm nhấn cho phòng khách, phòng ăn, phòng làm việc và các không gian khác.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="seemore_bt_1"><a>HẾT</a></div>
+        </div>
+    </div>
     <!-- testimonial section end -->
-    <!-- contact section start -->
-    <!-- <div class="contact_section layout_padding">
-       <div class="container">
-          <h1 class="watchs_taital">04<br>Get In Touch</h1>
-       </div>
-       <div class="contact_section_2">
-          <div class="container-fluid">
-             <div class="row">
-                <div class="col-md-6">
-                   <div class="mail_section_1">
-                      <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
-                      <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number">
-                      <input type="text" class="mail_text" placeholder="Email" name="Email">
-                      <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                      <div class="send_bt"><a href="#">SEND</a></div>
-                   </div>
-                </div>
-                <div class="col-md-6 padding_right_0">
-                   <div class="map_section"><img src="~/images/map-img.png"></div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div> -->
-    <!-- contact section end -->
-</div>
+</div> 
+

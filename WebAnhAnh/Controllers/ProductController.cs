@@ -31,6 +31,8 @@ namespace WebAnhAnh.Controllers
                 ProductName = p.ProductName,
                 Price = p.Price ?? 0,
                 Image = p.Image ?? "",
+                Image1 = p.Image1 ?? "",
+                Image2 = p.Image2 ?? "",
                 Describe = p.Describe ?? "",
                 CategoryName = p.Category.CategoryName,
             });
@@ -75,6 +77,8 @@ namespace WebAnhAnh.Controllers
                ProductName = data.ProductName,
               Price = data.Price ?? 0,
                Image = data.Image ?? string.Empty,
+               Image1 = data.Image1 ?? string.Empty,
+               Image2 = data.Image2 ?? string.Empty,
                Describe = data.Describe ?? string.Empty,
               CategoryName = data.Category.CategoryName,
               SoLuongTon = 10,//tính sau
