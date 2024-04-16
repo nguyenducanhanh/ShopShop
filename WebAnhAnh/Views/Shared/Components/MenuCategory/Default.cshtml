@@ -4,13 +4,14 @@
 
 <style>
     .navbar {
-        background-color: white; /* Màu nền đen cho thanh menu */
+        background-color: pink; /* Màu nền đen cho thanh menu */
     }
 
     .navbar-nav .nav-item .nav-link {
-        border-radius: 20px; /* Border tròn */
+        border-radius: 10px; /* Border tròn */
         margin: 0 10px; /* Khoảng cách giữa các menu */
         transition: background-color 0.3s; /* Hiệu ứng khi hover */
+        background-color: pink;
     }
 
         .navbar-nav .nav-item .nav-link:hover {
@@ -21,7 +22,7 @@
               
 
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+ <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
        
 
@@ -29,19 +30,14 @@
             <ul class="navbar-nav mr-auto">
                 @foreach (var item in Model)
                 {
-                   @*  <li class="nav-item">
-
-                        <a style="font-size:15px;color:gray" asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link">@item.CategoryName (@item.Quantity)</a>
-
-                    </li> *@
                     <li class="nav-item">
-                        <a style="font-size: 15px; color: black; font-family: 'Helvetica', sans-serif; font-weight: 500; text-decoration: none;" asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link">@item.CategoryName (@item.Quantity)</a>
+                        <a style="font-size: 15px; color: black; font-family: 'Helvetica', sans-serif; font-weight: 500; text-decoration: none;" asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link"> <div class="row"> @item.CategoryName (@item.Quantity)</div></a>
                     </li>
                 }
 
             </ul>
         </div>
     </div>
-</nav>
+</nav> 
 
 

@@ -805,6 +805,26 @@
       "PackagePath": "staticwebassets\\images\\footer-bg.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong01.png",
+      "PackagePath": "staticwebassets\\images\\giuong01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong02.png",
+      "PackagePath": "staticwebassets\\images\\giuong02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong03.png",
+      "PackagePath": "staticwebassets\\images\\giuong03.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong05.png",
+      "PackagePath": "staticwebassets\\images\\giuong05.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong07.png",
+      "PackagePath": "staticwebassets\\images\\giuong07.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\header-bg.png",
       "PackagePath": "staticwebassets\\images\\header-bg.png"
     },
@@ -815,6 +835,10 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\linkedin-icon.png",
       "PackagePath": "staticwebassets\\images\\linkedin-icon.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logol.png",
+      "PackagePath": "staticwebassets\\images\\logol.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logon.png",

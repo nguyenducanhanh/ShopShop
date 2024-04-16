@@ -5,9 +5,14 @@
 }
 
 @await Component.InvokeAsync("MenuCategory")
-
-
-<div class="container-fluid py-5">
+<span asp-validation-for="@Model.CustomerId" class="text-danger"></span>
+<span asp-validation-for="@Model.PassWord" class="text-danger"></span>
+<span asp-validation-for="@Model.CustomerName" class="text-danger"></span>
+<span asp-validation-for="@Model.DateOfBirth" class="text-danger"></span>
+<span asp-validation-for="@Model.Address" class="text-danger"></span>
+<span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+<span asp-validation-for="@Model.Email" class="text-danger"></span>
+@* <div class="container-fluid py-5">
 	<div class="container py-5">
 		<h1 class="mb-4">Đăng ký Thành viên</h1>
 		<form asp-action="Register" enctype="multipart/form-data">
@@ -64,4 +69,82 @@
 			</div>
 		</form>
 	</div>
+</div>
+
+
+ *@
+
+
+
+
+
+
+ <br />
+						<!-- Button trigger modal -->
+<div class="row">
+	
+	<div class="col-md-6 d-flex justify-content-center">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			ĐĂNG KÝ
+		</button>
+	</div>
+	<div class="col-md-6 d-flex justify-content-center">
+		<!-- Button trigger modal -->
+		<a asp-controller="Customer" asp-action="LOGIN" class="btn btn-primary">
+			ĐĂNG NHẬP
+		</a>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="column" id="main">
+          <h1>  ĐĂNG KÝ </h1>
+          	<form asp-action="Register" enctype="multipart/form-data">
+            <div class="form-group">
+              <label asp-for="@Model.CustomerId" class="form-label my-3"></label><sup>*</sup>
+							<input asp-for="@Model.CustomerId" class="form-control">
+							<span asp-validation-for="@Model.CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+        	<label asp-for="@Model.PassWord" class="form-label my-3"></label><sup>*</sup>
+						<input asp-for="@Model.PassWord" class="form-control">
+						<span asp-validation-for="@Model.PassWord" class="text-danger"></span>      </div>
+            <div class="form-group">
+           	<label class="form-label my-3" asp-for="@Model.CustomerName"></label><sup>*</sup>
+						<input asp-for="@Model.CustomerName" class="form-control" />
+						<span asp-validation-for="@Model.CustomerName" class="text-danger"></span>   
+					</div>
+					   <div class="form-group">
+          	<label class="form-label my-3" asp-for="@Model.DateOfBirth"></label>
+						<input asp-for="@Model.DateOfBirth" class=" form-control" />
+						<span asp-validation-for="@Model.DateOfBirth" class="text-danger"></span>
+					</div>
+					   <div class="form-group">
+           <label class="form-label my-3" asp-for="@Model.Address"></label><sup>*</sup>
+						<input asp-for="@Model.Address" class="form-control" />
+						<span asp-validation-for="@Model.Address" class="text-danger"></span>
+					</div>
+					   <div class="form-group">
+          	<label class="form-label my-3" asp-for="@Model.PhoneNumber"></label><sup>*</sup>
+						<input asp-for="@Model.PhoneNumber" class="form-control" />
+						<span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>  
+					</div>
+					 <div class="form-group">
+					<label class="form-label my-3" asp-for="@Model.Email"></label><sup>*</sup>
+						<input asp-for="@Model.Email" class="form-control" />
+						<span asp-validation-for="@Model.Email" class="text-danger"></span></div>
+  
+				<div class="row g-4 text-center align-items-center justify-content-center pt-4">
+					<button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Đăng ký</button>
+				</div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

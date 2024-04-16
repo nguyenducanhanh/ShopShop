@@ -187,11 +187,12 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ListProducts">Sản Phẩm</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="Categories" asp-action="List">Hãng Sản Phẩm</a></li>
+                               
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../pages/icons/mdi.html">
+                        <a class="nav-link" asp-area="admin" asp-controller="Orders" asp-action="Index">
                             <span class="menu-title">Hóa Đơn</span>
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>

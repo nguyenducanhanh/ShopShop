@@ -15,8 +15,30 @@ namespace WebAnhAnh.Controllers
         }
 
 
-     
-        public IActionResult Index(int? category)
+
+        //public IActionResult Index(int? category)
+        //{
+        //    var products = db.Products.AsQueryable();
+
+        //    if (category.HasValue)
+        //    {
+        //        products = products.Where(p => p.CategoryId == category.Value);
+        //    }
+
+        //    var result = products.Select(p => new ProductsRepository
+        //    {
+        //        ProductID = p.ProductId,
+        //        ProductName = p.ProductName,
+        //        Price = p.Price ?? 0,
+        //        Image = p.Image ?? "",
+        //        Image1 = p.Image1 ?? "",
+        //        Image2 = p.Image2 ?? "",
+        //        Describe = p.Describe ?? "",
+        //        CategoryName = p.Category.CategoryName,
+        //    });
+        //    return View(result);
+        //}
+        public IActionResult Index(int? category, int page = 1, int pageSize = 8)
         {
             var products = db.Products.AsQueryable();
 
@@ -24,6 +46,9 @@ namespace WebAnhAnh.Controllers
             {
                 products = products.Where(p => p.CategoryId == category.Value);
             }
+
+            var totalCount = products.Count();
+            var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
 
             var result = products.Select(p => new ProductsRepository
             {
@@ -35,7 +60,14 @@ namespace WebAnhAnh.Controllers
                 Image2 = p.Image2 ?? "",
                 Describe = p.Describe ?? "",
                 CategoryName = p.Category.CategoryName,
-            });
+            })
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+            ViewBag.TotalPages = totalPages;
+            ViewBag.CurrentPage = page;
+
             return View(result);
         }
 

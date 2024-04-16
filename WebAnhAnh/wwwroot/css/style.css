@@ -412,7 +412,7 @@ button {
 .background_bg{
     width: 100%;
     float: left;
-    background-image: url(../images/background-bg.png);
+    background-color:white;
     height: auto;
 }
 /* background bg section end */
@@ -431,7 +431,7 @@ button {
     width: 100%;
     float: left;
     font-size: 40px;
-    color: #f1f0ef;
+    color: black;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -460,7 +460,7 @@ h1.watchs_taital::after {
     width: 100%;
     float: left;
     font-size: 16px;
-    color: #ffffff;
+    color: black;
    margin: 0px;
 }
 
@@ -468,7 +468,7 @@ h1.watchs_taital::after {
     width: 100%;
     float: left;
     font-size: 24px;
-    color: #f1f0ef;
+    color: red;
     font-weight: bold;
     text-transform: uppercase;
     padding-top: 70px;
@@ -477,7 +477,7 @@ h1.watchs_taital::after {
     width: 100%;
     float: left;
     font-size: 24px;
-    color: #f1f0ef;
+    color: red;
     font-weight: bold;
     text-transform: uppercase;
     padding-top: 15px;
@@ -501,7 +501,7 @@ h1.watchs_taital::after {
     width: 100%;
     float: left;
     font-size: 16px;
-    color: #ffffff;
+    color:greenyellow;
     background-color: #b60213;
     text-align: center;
     padding: 10px 0px;
@@ -562,9 +562,10 @@ h1.watchs_taital::after {
 }
 .border_main{
     width: 100%;
-    border: 2px solid #fefefe;
+    border: 2px solid pink;
     border-radius: 3px;
     padding: 40px 0px;
+    background:white;
 }
 .image_4 {
     width: 100%;

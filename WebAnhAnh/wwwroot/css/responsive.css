@@ -278,6 +278,7 @@ h1.watchs_taital::after {
 .border_main{
     margin-top: 30px;
     padding: 20px 0px;
+    background:yellow;
 }
 .box_main {
     padding: 40px 10px;

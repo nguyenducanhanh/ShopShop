@@ -4,27 +4,29 @@
 @*         Xử lý giao diện điện thoại *@
           <div class="mobile_menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="logo_mobile"><a href="/"><img src="~/images/logon.png"></a></div>
+                <div class="logo_mobile"><a href="/"><img src="~/images/logol.png"></a></div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">Trang Chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About us</a>
+                        <a class="nav-link " asp-controller="Product" asp-action="Index">Sản Phẩm</a>
                         </li>
+
                         <li class="nav-item">
-                        <a class="nav-link " asp-controller="Product" asp-action="Index">Products</a>
+                            <a class="nav-link" href="about.html">Về Chúng Tôi</a>
+                        </li>
+                         <li class="nav-item">
+                        <a class="nav-link " asp-controller="Customer" asp-action="Login">Đăng Nhập</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link " asp-controller="Customer" asp-action="Register">Register</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link " asp-controller="Customer" asp-action="Login">Login</a>
-                        </li>
+                       
                         <li class="nav-item">
                         <a data-bs-toggle="modal" data-bs-target="#searchModalll" class="nav-link " href="#"><img src="~/images/search-icon.png"></a>
                       
@@ -34,15 +36,17 @@
             </nav>
         </div>
         <div class="container-fluid">
-            <div class="logo"><a href="#"><img src="~/images/logon.png"></a></div>
+            <div class="logo"><a href="#"><img src="~/images/logol.png"></a></div>
             <div class="menu_main">
                 <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a asp-controller="Product" asp-action="Index" >Products</a></li>
-                <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li>
-                <li><a asp-controller="Customer" asp-action="Login">login</a></li>
-                <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li>
+                <li class="active"><a href="/">Trang Chủ</a></li>
+               
+                <li><a asp-controller="Product" asp-action="Index">Sản Phẩm</a></li>
+                <li><a href="#">Dịch Vụ</a></li>
+                <li><a href="#">Về Chúng Tôi</a></li>
+               @*  <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li> *@
+                <li><a asp-controller="Customer" asp-action="Login">Đăng Nhập</a></li>
+               @*  <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li> *@
                 <li><a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a></li>
                 @await Component.InvokeAsync("Cart")
                 </ul>

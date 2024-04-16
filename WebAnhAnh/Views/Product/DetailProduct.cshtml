@@ -16,7 +16,7 @@
         .quantity input {
             width: 50px;
             text-align: center;
-            border: 1px solid #ccc;
+            border: 1px solid red;
             border-radius: 3px;
             font-size: 16px;
             padding: 5px;
@@ -24,8 +24,8 @@
         }
 
         .quantity button {
-            background-color: gray;
-            color: white;
+            background-color: yellow;
+            color: green;
             border: none;
             cursor: pointer;
             padding: 8px 12px;
@@ -78,11 +78,11 @@
 
 
                    
-                    <div style="color:white" class="col-lg-6">
-                        <h2 style="color:white" class="fw-bold mb-3">Tên sản phẩm :  @Model.ProductName</h2>
-                        <h2 style="color:white;" class="mb-3">
+                    <div style="color:red" class="col-lg-6">
+                        <h2 style="color:red" class="fw-bold mb-3">Tên sản phẩm :  @Model.ProductName</h2>
+                        <h2 style="color:red;" class="mb-3">
                             Loại :  @Model.CategoryName</h2>
-                        <h2 class="fw-bold mb-3" style="color:white;">@Model.Price $</h2>
+                        <h2 class="fw-bold mb-3" style="color:red;">@Model.Price $</h2>
                         <div style="color:yellow" class="d-flex mb-4">
                             <i class="fa fa-star "></i>
                             <i class="fa fa-star "></i>
@@ -90,7 +90,7 @@
                             <i class="fa fa-star "></i>
                             <i class="fa fa-star text-secondary"></i>
                         </div>
-                        <h2 style="color:white;" class="mb-4">@Model.Describe</h2>
+                        <h2 style="color:red;" class="mb-4">@Model.Describe</h2>
 
                            <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ProductID">
                         <div class="row" style="margin-left:7px">

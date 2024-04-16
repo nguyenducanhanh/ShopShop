@@ -6,30 +6,19 @@
     <div class="col-md-3">
     <br>   
         <div class="border_main">
-     
             <div class="image_4">
-                <p href="/"><h4 style="color:white">@item.CategoryName</h4></p>
+                <p href="/"><h4 style="color:gray">@item.CategoryName</h4></p>
                 <a asp-action="DetailProduct" asp-controller="Product" asp-route-id="@item.ProductID">
-                <img style="height:130px;border-radius:20px" src="~/images/@item.Image"> 
+                <img style="height:130px;border-radius:5px;weight:100px" src="~/images/@item.Image"> 
                 </a>
-               
-                <p href="/"><h4 style="color:white">@item.ProductName</h4></p>
-                <p style="color:white">@item.Describe</p>
-                <p style="color:white" class=" fs-5 fw-bold mb-0">$@item.Price</p>
-                <a style="color:white" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ProductID" class="btn border border-secondary rounded-pill px-3 ">Add to card</a>
+                <p href="/"><h4 style="color:gray">@item.ProductName</h4></p>
+              
+                <p style="color:gray" class=" fs-5 fw-bold mb-0">$@item.Price</p>
+                <a style="color:gray" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ProductID" class="btn border border-secondary rounded-pill px-3 ">Add to card</a>
             </div> 
         </div> 
-    </div>
-    } 
+    </div> 
 
-
-
-
-
-
-
-
-
-
+    }
 
 

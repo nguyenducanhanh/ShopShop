@@ -24,7 +24,7 @@ namespace WebAnhAnh.Areas.Admin.Controllers
         [Route("ListProducts")]
         public IActionResult ListProducts(int? page)
         {
-            int pageSize = 3;
+            int pageSize = 6;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             //  var sanpham = db.Products.AsNoTracking().OrderBy(x => x.ProductName);
             var sanpham = db.Products.Include(p => p.Category).Include(p => p.Supplier);

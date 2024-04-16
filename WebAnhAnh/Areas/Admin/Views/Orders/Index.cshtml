@@ -1,0 +1,114 @@
+﻿@model IEnumerable<WebAnhAnh.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1 style="text-align: center;">DANH SÁCH ĐƠN HÀNG </h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                NGÀY ĐẶT
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th> *@
+            <th>
+                TÊN NGƯỜI ĐẶT
+            </th>
+            <th>
+                ĐỊA CHỈ NHẬN HÀNG
+            </th>
+            <th>
+               SỐ ĐIỆN THOẠI
+            </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.HowToPay)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.TransportFee)
+            </th> *@
+            <th>
+                GHI CHÚ
+            </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+@foreach (var item in Model) {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+            <tr class="@cls">
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.HowToPay)
+            </td> *@
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.TransportFee)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusId)
+            </td> *@
+                <td>
+                    <div class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a class="btn btn-primary" href="@Url.Action("Details", new { id = item.OrderId })">CHI TIẾT</a>
+                        <form id="deleteForm-@item.OrderId" asp-action="Delete" asp-route-id="@item.OrderId" method="post">
+                            <button type="button" onclick="confirmDelete('@item.OrderId')" class="btn btn-danger">XÓA</button>
+                        </form>
+                    </div>
+                </td>
+
+
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+    function confirmDelete(orderId) {
+        if (confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')) {
+            document.getElementById('deleteForm-' + orderId).submit();
+        }
+    }
+</script>
+
