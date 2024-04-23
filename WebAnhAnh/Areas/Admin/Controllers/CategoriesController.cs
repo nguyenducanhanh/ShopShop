@@ -3,9 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Models;
 using X.PagedList;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 namespace WebAnhAnh.Areas.Admin.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     //[Route("admin")]
     [Route("admin/categories")]

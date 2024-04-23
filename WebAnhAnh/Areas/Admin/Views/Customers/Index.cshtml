@@ -1,0 +1,118 @@
+﻿@* @model IEnumerable<WebAnhAnh.Models.Customer> *@
+@using WebAnhAnh.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.BasePagedList<Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+<h1 style="text-align: center;">DANH SÁCH TÀI KHOẢN</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên 
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+               Số điện thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Cho phép hoạt động
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+@foreach (var item in Model) {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+            <tr class="@cls">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Effect)
+            </td>
+
+
+            <td>
+                    <div class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.CustomerId">SỬA</a>
+
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete('@item.CustomerId')">Delete</button>
+                        <form id="deleteForm-@item.CustomerId" asp-action="Delete" asp-route-id="@item.CustomerId" method="post" style="display: none;">
+                        </form>
+                    </div>
+           
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("Index", new { page = Model.HasPreviousPage ? Model.PageNumber - 1 : 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int ii = 1; ii <= Model.PageCount; ii++)
+            {
+                <li class="page-item @(ii == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = ii })">@ii</a>
+                </li>
+            }
+            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("Index", new { page = Model.HasNextPage ? Model.PageNumber + 1 : Model.PageCount })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+<script>
+    function confirmDelete(CustomerId) {
+        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+            document.getElementById('deleteForm-' + CustomerId).submit();
+        }
+    }
+</script>

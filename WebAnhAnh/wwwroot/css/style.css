@@ -579,7 +579,7 @@ h1.watchs_taital::after {
 .testimonial_section{
     width: 100%;
     float: left;
-    background-image: url(../images/testimonial-bg.png);
+    background-color: pink;
     height: auto;
     background-size: 100%;
     background-repeat: no-repeat;

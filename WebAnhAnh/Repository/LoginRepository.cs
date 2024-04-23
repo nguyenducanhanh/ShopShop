@@ -13,6 +13,7 @@ namespace WebAnhAnh.Repository
         [Required(ErrorMessage = "Chưa nhập mật khẩu")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public int Role { get; set; }
         public bool? IsAdmin { get; set; }
     }
 }

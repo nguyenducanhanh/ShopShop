@@ -7,7 +7,7 @@ using X.PagedList;
 
 namespace WebAnhAnh.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     [Area("admin")]
     [Route("admin")]
     [Route("admin/homeadmin")]
@@ -26,7 +26,6 @@ namespace WebAnhAnh.Areas.Admin.Controllers
         {
             int pageSize = 6;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
-            //  var sanpham = db.Products.AsNoTracking().OrderBy(x => x.ProductName);
             var sanpham = db.Products.Include(p => p.Category).Include(p => p.Supplier);
             PagedList<Product> lst = new PagedList<Product>(sanpham, pageNumber, pageSize);
             return View(lst);

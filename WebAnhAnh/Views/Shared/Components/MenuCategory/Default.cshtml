@@ -1,22 +1,36 @@
-﻿@model IEnumerable<WebAnhAnh.Repository.MenuCategoryRepository>
+﻿
+@model IEnumerable<WebAnhAnh.Repository.MenuCategoryRepository>
 
+
+   
+<style>
  
 
-<style>
-    .navbar {
-        background-color: pink; /* Màu nền đen cho thanh menu */
+.filter_buttonss{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+.filter_buttonss a{
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+            background-color: pink;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: rgba(50,50,93,0.25) 0px 2px 5px -1px, rgba(0,0,0,0.3) 0px 1px 3px -1px;
+}
+.filter_buttonss a.active{
+    background-color: #0D0C22;
+    color: #fff;
+}
+
+                .filter_buttonss a:hover {
+        background-color: #1bc8bb9c; /* Màu nền khi hover */
     }
 
-    .navbar-nav .nav-item .nav-link {
-        border-radius: 10px; /* Border tròn */
-        margin: 0 10px; /* Khoảng cách giữa các menu */
-        transition: background-color 0.3s; /* Hiệu ứng khi hover */
-        background-color: pink;
-    }
-
-        .navbar-nav .nav-item .nav-link:hover {
-            background-color: #1bc8bb9c ; /* Màu nền khi hover */
-        }
 </style>
 
               
@@ -24,20 +38,17 @@
 
  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
+
+    
+            
+                <div class="filter_buttonss">
+                    @foreach (var item in Model)
+                    {
+                              <a asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link"> <div class="row"> @item.CategoryName (@item.Quantity)</div></a>
+
+                    }
+                </div>
+           
        
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                @foreach (var item in Model)
-                {
-                    <li class="nav-item">
-                        <a style="font-size: 15px; color: black; font-family: 'Helvetica', sans-serif; font-weight: 500; text-decoration: none;" asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="nav-link"> <div class="row"> @item.CategoryName (@item.Quantity)</div></a>
-                    </li>
-                }
-
-            </ul>
-        </div>
     </div>
-</nav> 
-
-
+</nav>

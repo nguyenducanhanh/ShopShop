@@ -20,4 +20,15 @@
 		public double Amount { get; set; }
 		public DateTime CreatedDate { get; set; }
 	}
+
+
+
+	public class VnPaymentRequestModell
+	{
+		public bool GiongKhachHang { get; set; }
+		public string? CustomerName { get; set; }
+		public string? Address { get; set; }
+		public string? PhoneNumber { get; set; }
+		public string? Note { get; set; }
+	}
 }

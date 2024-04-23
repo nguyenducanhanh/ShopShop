@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Models;
+using X.PagedList;
 
 namespace WebAnhAnh.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("admin/orders")]
     public class OrdersController : Controller
@@ -20,15 +23,19 @@ namespace WebAnhAnh.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/Orders
-        public async Task<IActionResult> Index()
-        {
-            var shopShopContext = _context.Orders.Include(o => o.Customer).Include(o => o.Status);
-            return View(await shopShopContext.ToListAsync());
-        }
 
-       
-     
+      
+
+        public IActionResult Index(int? page)
+        {
+            // Lấy thông báo từ TempData (nếu có)
+            ViewBag.ErrorMessage = TempData["ErrorMessage"] as string;
+            int pageSize = 5;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var sanpham = db.Orders.Include(p => p.Status).AsNoTracking().OrderBy(x => x.PhoneNumber);
+            PagedList<Order> lst = new PagedList<Order>(sanpham, pageNumber, pageSize);
+            return View(lst);
+        }
 
         // POST: Admin/Orders/Delete/5
 

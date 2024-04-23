@@ -1,5 +1,7 @@
-﻿@model IEnumerable<WebAnhAnh.Models.Order>
-
+﻿@* @model IEnumerable<WebAnhAnh.Models.Order> *@
+@using WebAnhAnh.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.BasePagedList<Order>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
@@ -9,7 +11,12 @@
 <h1 style="text-align: center;">DANH SÁCH ĐƠN HÀNG </h1>
 
 
-
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
 <table class="table">
     <thead>
         <tr class="table-warning">
@@ -20,13 +27,16 @@
                 @Html.DisplayNameFor(model => model.DeliveryDate)
             </th> *@
             <th>
-                TÊN NGƯỜI ĐẶT
+                TÊN 
             </th>
             <th>
-                ĐỊA CHỈ NHẬN HÀNG
+                ĐỊA CHỈ 
             </th>
             <th>
                SỐ ĐIỆN THOẠI
+            </th>
+            <th>
+                PHƯƠNG THỨC 
             </th>
           @*   <th>
                 @Html.DisplayNameFor(model => model.HowToPay)
@@ -34,8 +44,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.TransportFee)
             </th> *@
-            <th>
+           @*  <th>
                 GHI CHÚ
+            </th> *@
+            <th>
+                TRẠNG THÁI
             </th>
           @*   <th>
                 @Html.DisplayNameFor(model => model.Customer)
@@ -43,7 +56,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th> *@
-            <th></th>
+            <th>LÀM GÌ</th>
         </tr>
     </thead>
     <tbody>
@@ -74,21 +87,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-           @*  <td>
-                @Html.DisplayFor(modelItem => item.HowToPay)
-            </td> *@
+            <td>
+                @item.HowToPay
+            </td> 
            @*  <td>
                 @Html.DisplayFor(modelItem => item.TransportFee)
             </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
-            </td>
-           @*  <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status.StatusId)
+            @* <td>
+                @item.Note
             </td> *@
+                @*   <td>
+              @item.Customer.CustomerId
+                    
+            </td>   *@
+             <td>
+                @item.Status.StatusName
+            </td>  
                 <td>
                     <div class="btn-group" role="group" aria-label="Edit and Delete">
                         <a class="btn btn-primary" href="@Url.Action("Details", new { id = item.OrderId })">CHI TIẾT</a>
@@ -112,3 +126,26 @@
     }
 </script>
 
+
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("Index", new { page = Model.HasPreviousPage ? Model.PageNumber - 1 : 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int ii = 1; ii <= Model.PageCount; ii++)
+            {
+                <li class="page-item @(ii == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = ii })">@ii</a>
+                </li>
+            }
+            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("Index", new { page = Model.HasNextPage ? Model.PageNumber + 1 : Model.PageCount })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

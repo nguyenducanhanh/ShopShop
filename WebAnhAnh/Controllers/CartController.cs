@@ -117,7 +117,6 @@ namespace WebAnhAnh.Controllers
 					PhoneNumber = model.PhoneNumber ?? khachHang.PhoneNumber,
 					OrderDate = DateTime.Now,
 					HowToPay = "COD",
-
 					StatusId = 1,
 					Note = model.Note
 				};
@@ -159,11 +158,75 @@ namespace WebAnhAnh.Controllers
 			return View(Cart);
 		}
 
+
 		[Authorize]
 		public IActionResult PaymentSuccess()
 		{
 			return View("Success");
 		}
+
+
+
+		//[Authorize]
+
+		//public IActionResult PaymentSuccess(CheckoutRepository model, string payment = "COD")
+		//{
+		//	//Lưu thông tin đơn hàng vào cơ sở dữ liệu
+		//	var customerId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID).Value;
+		//	var khachHang = new Customer();
+		//	if (model.GiongKhachHang)
+		//	{
+		//		khachHang = db.Customers.SingleOrDefault(kh => kh.CustomerId == customerId);
+		//	}
+
+		//	var hoadon = new Order
+		//	{
+		//		CustomerId = customerId,
+		//		CustomerName = model.CustomerName ?? khachHang.CustomerName,
+		//		Address = model.Address ?? khachHang.Address,
+		//		PhoneNumber = model.PhoneNumber ?? khachHang.PhoneNumber,
+		//		OrderDate = DateTime.Now,
+		//		HowToPay = "PayPal",
+		//		StatusId = 2, // Đã thanh toán thành công
+		//		Note = model.Note
+		//	};
+
+		//	db.Database.BeginTransaction();
+		//	try
+		//	{
+		//		db.Add(hoadon);
+		//		db.SaveChanges();
+
+		//		var cthds = new List<OrderDetailId>();
+		//		foreach (var item in Cart)
+		//		{
+		//			cthds.Add(new OrderDetailId
+		//			{
+		//				OrderId = hoadon.OrderId,
+		//				Quantity = item.Quantity,
+		//				Price = item.Price,
+		//				ProductId = item.ProductID,
+		//				Discount = 0
+		//			});
+		//		}
+		//		db.AddRange(cthds);
+		//		db.SaveChanges();
+		//		db.Database.CommitTransaction();
+
+		//		HttpContext.Session.Set<List<CartRepository>>(Val.CART_KEY, new List<CartRepository>());
+
+		//		return View("Success"); // Trả về view "Success" sau khi lưu thành công
+		//	}
+		//	catch
+		//	{
+		//		db.Database.RollbackTransaction();
+		//	}
+
+		//	return RedirectToAction("Index"); // Nếu có lỗi, chuyển hướng đến trang Index
+		//}
+
+
+
 
 		#region Paypal payment
 		[Authorize]
@@ -174,11 +237,11 @@ namespace WebAnhAnh.Controllers
 			var tongTien = Cart.Sum(p => p.TotalPayment).ToString();
 			var donViTienTe = "USD";
 			var maDonHangThamChieu = "DH" + DateTime.Now.Ticks.ToString();
-
-			try
+          
+            try
 			{
 				var response = await _paypalClient.CreateOrder(tongTien, donViTienTe, maDonHangThamChieu);
-
+				
 				return Ok(response);
 			}
 			catch (Exception ex)
@@ -196,8 +259,47 @@ namespace WebAnhAnh.Controllers
 			{
 				var response = await _paypalClient.CaptureOrder(orderID);
 
-				// Lưu database đơn hàng của mình
+				// Retrieve customer information
+				var customerId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID)?.Value;
+				var customer = db.Customers.SingleOrDefault(c => c.CustomerId == customerId);
 
+				// Create the order with customer information
+				var order = new Order
+				{
+					CustomerId = customerId,
+					CustomerName = customer?.CustomerName,
+					Address = customer?.Address,
+					PhoneNumber = customer?.PhoneNumber,
+					OrderDate = DateTime.Now,
+					HowToPay = "PayPal",
+					StatusId = 2, // Đã thanh toán thành công
+					Note = "" // Add any additional information here
+							 
+				};
+
+				db.Add(order);
+				db.SaveChanges();
+
+				// Save order details and perform other necessary actions
+				var cthds = new List<OrderDetailId>();
+				foreach (var item in Cart)
+				{
+					cthds.Add(new OrderDetailId
+					{
+						OrderId = order.OrderId,
+						Quantity = item.Quantity,
+						Price = item.Price,
+						ProductId = item.ProductID,
+						Discount = 0
+					});
+				}
+				db.AddRange(cthds);
+				db.SaveChanges();
+				//			db.Database.CommitTransaction();
+
+				//HttpContext.Session.Set<List<CartRepository>>(Val.CART_KEY, new List<CartRepository>());
+				// Xóa giỏ hàng
+				HttpContext.Session.Remove(Val.CART_KEY);
 				return Ok(response);
 			}
 			catch (Exception ex)
@@ -207,6 +309,9 @@ namespace WebAnhAnh.Controllers
 			}
 		}
 
+
+
+
 		#endregion
 		[Authorize]
 		public IActionResult PaymentFail()
@@ -214,8 +319,23 @@ namespace WebAnhAnh.Controllers
 			return View();
 		}
 
+		//[Authorize]
+		//public IActionResult PaymentCallBack(VnPaymentRequestModell model)
+		//{
+		//	var response = _vnPayservice.PaymentExecute(Request.Query);
+
+		//	if (response == null || response.VnPayResponseCode != "00")
+		//	{
+		//		TempData["Message"] = $"Lỗi thanh toán VN Pay: {response.VnPayResponseCode}";
+		//		return RedirectToAction("PaymentFail");
+		//	}
+		//	// Lưu đơn hàng vô database
+		//	TempData["Message"] = $"Thanh toán VNPay thành công";
+		//	return RedirectToAction("PaymentSuccess");
+		//}
+
 		[Authorize]
-		public IActionResult PaymentCallBack()
+		public IActionResult PaymentCallBack(VnPaymentRequestModel model)
 		{
 			var response = _vnPayservice.PaymentExecute(Request.Query);
 
@@ -225,11 +345,55 @@ namespace WebAnhAnh.Controllers
 				return RedirectToAction("PaymentFail");
 			}
 
+			// Lưu đơn hàng vào cơ sở dữ liệu
+			var customerId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID).Value;
+			var khachHang = db.Customers.SingleOrDefault(kh => kh.CustomerId == customerId);
 
-			// Lưu đơn hàng vô database
+			var hoadon = new Order
+			{
+				CustomerId = customerId,
+				CustomerName = khachHang?.CustomerName,
+				Address = khachHang?.Address,
+				PhoneNumber = khachHang?.PhoneNumber,
+				OrderDate = DateTime.Now,
+				HowToPay = "VNPay",
+				StatusId = 2, // Đã thanh toán thành công
+				Note = "" // Thêm thông tin ghi chú nếu cần
+			};
 
-			TempData["Message"] = $"Thanh toán VNPay thành công";
-			return RedirectToAction("PaymentSuccess");
+			db.Database.BeginTransaction();
+			try
+			{
+				db.Add(hoadon);
+				db.SaveChanges();
+
+				var cthds = new List<OrderDetailId>();
+				foreach (var item in Cart)
+				{
+					cthds.Add(new OrderDetailId
+					{
+						OrderId = hoadon.OrderId,
+						Quantity = item.Quantity,
+						Price = item.Price,
+						ProductId = item.ProductID,
+						Discount = 0
+					});
+				}
+				db.AddRange(cthds);
+				db.SaveChanges();
+				db.Database.CommitTransaction();
+				// Xóa giỏ hàng
+				HttpContext.Session.Remove(Val.CART_KEY);
+				TempData["Message"] = $"Thanh toán VNPay thành công";
+				return RedirectToAction("PaymentSuccess");
+			}
+			catch
+			{
+				db.Database.RollbackTransaction();
+				TempData["Message"] = "Có lỗi xảy ra trong quá trình xử lý đơn hàng.";
+				return RedirectToAction("PaymentFail");
+			}
 		}
+
 	}
 }

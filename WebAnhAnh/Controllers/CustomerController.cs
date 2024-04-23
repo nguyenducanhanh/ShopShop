@@ -58,6 +58,61 @@ namespace WebAnhAnh.Controllers
             return View();
         }
 		[HttpPost]
+        //public async Task<IActionResult> Login(LoginRepository model, string? ReturnUrl)
+        //{
+        //    ViewBag.ReturnUrl = ReturnUrl;
+        //    if (ModelState.IsValid)
+        //    {
+        //        var khachHang = db.Customers.SingleOrDefault(kh => kh.CustomerId == model.UserName);
+        //        if (khachHang == null)
+        //        {
+        //            ModelState.AddModelError("loi", "Không có khách hàng này");
+        //        }
+        //        else
+        //        {
+        //            if (!khachHang.Effect)
+        //            {
+        //                ModelState.AddModelError("loi", "Tài khoản đã bị khóa. Vui lòng liên hệ Admin.");
+        //            }
+        //            else
+        //            {
+        //                if (khachHang.PassWord != model.Password.ToMd5Hash(khachHang.RandomKey))
+        //                {
+        //                    ModelState.AddModelError("loi", "Sai thông tin đăng nhập");
+        //                }
+        //                else
+        //                {
+        //                    var claims = new List<Claim> {
+        //                        new Claim(ClaimTypes.Email, khachHang.Email),
+        //                        new Claim(ClaimTypes.Name, khachHang.CustomerName),
+        //                        new Claim(Val.CLAIM_CUSTOMERID, khachHang.CustomerId),
+
+        //						//claim - role động
+        //						new Claim(ClaimTypes.Role, "Customer")
+        //                    };
+
+        //                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        //                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+        //                    await HttpContext.SignInAsync(claimsPrincipal);
+
+        //                    if (Url.IsLocalUrl(ReturnUrl))
+        //                    {
+        //                        return Redirect(ReturnUrl);
+        //                    }
+        //                    else
+        //                    {
+        //                        return Redirect("/");
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return View();
+        //}
+
+
+        // Trong CustomerController.cs
         public async Task<IActionResult> Login(LoginRepository model, string? ReturnUrl)
         {
             ViewBag.ReturnUrl = ReturnUrl;
@@ -82,27 +137,56 @@ namespace WebAnhAnh.Controllers
                         }
                         else
                         {
-                            var claims = new List<Claim> {
-                                new Claim(ClaimTypes.Email, khachHang.Email),
-                                new Claim(ClaimTypes.Name, khachHang.CustomerName),
-                                new Claim(Val.CLAIM_CUSTOMERID, khachHang.CustomerId),
-
-        						//claim - role động
-        						new Claim(ClaimTypes.Role, "Customer")
-                            };
-
-                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-                            await HttpContext.SignInAsync(claimsPrincipal);
-
-                            if (Url.IsLocalUrl(ReturnUrl))
+                            // Kiểm tra role của khách hàng
+                            if (khachHang.Role == 0)
                             {
-                                return Redirect(ReturnUrl);
+                                // Nếu role = 0, chỉ cho phép truy cập trang chủ
+                                var claims = new List<Claim> {
+                            new Claim(ClaimTypes.Email, khachHang.Email),
+                            new Claim(ClaimTypes.Name, khachHang.CustomerName),
+                            new Claim(Val.CLAIM_CUSTOMERID, khachHang.CustomerId),
+                            new Claim(ClaimTypes.Role, "Customer")
+                              
+                        };
+
+                                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                                await HttpContext.SignInAsync(claimsPrincipal);
+
+                                if (Url.IsLocalUrl(ReturnUrl))
+                                {
+                                    return Redirect(ReturnUrl);
+                                }
+                                else
+                                {
+                                    return Redirect("/");
+                                }
                             }
-                            else
+                            else if (khachHang.Role == 1)
                             {
-                                return Redirect("/");
+                                // Nếu role = 1, cho phép truy cập trang admin
+                                var claims = new List<Claim> {
+        new Claim(ClaimTypes.Email, khachHang.Email),
+        new Claim(ClaimTypes.Name, khachHang.CustomerName),
+        new Claim(Val.CLAIM_CUSTOMERID, khachHang.CustomerId),
+        new Claim(ClaimTypes.Role, "Admin")
+    };
+
+                                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                                await HttpContext.SignInAsync(claimsPrincipal);
+
+                                if (Url.IsLocalUrl(ReturnUrl))
+                                {
+                                    return Redirect(ReturnUrl);
+                                }
+                                else
+                                {
+                                    // Chuyển hướng đến trang admin
+                                    return RedirectToAction("Index", "Admin"); // Thay thế "Index", "Admin" bằng action và controller thực tế của trang admin của bạn
+                                }
                             }
                         }
                     }
@@ -111,16 +195,17 @@ namespace WebAnhAnh.Controllers
             return View();
         }
 
-     
+
+        
+
+        [Authorize(Roles = "Admin")]    // chưa đăng nhập ko đc vô trang này 
+        public IActionResult Profile()
+        {
+            return View();
+        }
 
 
-        [Authorize]   // chưa đăng nhập ko đc vô trang này 
-		public IActionResult Profile()
-		{
-			return View();
-		}
-
-		[Authorize]   // chưa đăng nhập ko đc vô trang này muốn vô thì bỏ chữ  [Authorize] đi 
+        [Authorize]   // chưa đăng nhập ko đc vô trang này muốn vô thì bỏ chữ  [Authorize] đi 
 		public async Task<IActionResult> Logout()
 		{
 			await HttpContext.SignOutAsync();

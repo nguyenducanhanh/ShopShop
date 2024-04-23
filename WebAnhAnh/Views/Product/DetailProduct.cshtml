@@ -8,6 +8,72 @@
 
 
 <style>
+    .product-detaill h2 {
+        text-transform: capitalize;
+        color: #12263a;
+        padding-bottom: 0.6rem;
+    }
+
+    .product-detaill p {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+        opacity: 0.8;
+    }
+
+    .product-detaill ul {
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+        .product-detaill ul li {
+            margin: 0;
+            list-style: none;
+            background: url(https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/checked.png) left center no-repeat;
+            background-size: 18px;
+            padding-left: 1.7rem;
+            margin: 0.4rem 0;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+            .product-detaill ul li span {
+                font-weight: 400;
+            }
+    .last-pricee span {
+        color: #f64749;
+        text-decoration: line-through;
+    }
+
+    .new-pricee span {
+        color: #256eff;
+    }
+    .product-pricee {
+        margin: 1rem 0;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+        .product-pricee span {
+            font-weight: 400;
+        }
+    .product-titlee {
+        font-size: 3rem;
+        text-transform: capitalize;
+        font-weight: 700;
+        position: relative;
+        color: #12263a;
+        margin: 1rem 0;
+    }
+
+        .product-titlee::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 4px;
+            width: 80px;
+            background: #12263a;
+        }
     .quantity {
         display: flex;
         align-items: center;
@@ -40,35 +106,30 @@
 
 <!-- background bg start -->
 <div class="background_bg">
-    <h2 class="watchs_taital">       </h2>
+    
     <!-- watchs section start -->
     <div class="watchs_section layout_padding">
 
         <div class="container">
-            <h1 class="watchs_taital"> @await Component.InvokeAsync("MenuCategory")<br>@Model.ProductName </h1>
+            <h1 class="watchs_taital"> @await Component.InvokeAsync("MenuCategory") <br /></h1>
             <br />
             <div class="watchs_section_2">
                 <div class="row">
-                    @* <div class="col-md-6">
-                        <div class="image_1"><img style="height:400px;border-radius:20px" src="~/images/@Model.Image"></div>
-                    </div> *@
-                  
                     <section class="py-5">
                         <div class="container">
                             <div class="row gx-5">
                                 <aside class="col-lg-6">
                                     <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp">
-                                            <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="~/images/@Model.Image" />
-
+                                        <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="~/images/@Model.Image">
+                                            <img style="max-width: 100%; max-height: 60vh; margin: auto;" class="rounded-4 fit" src="~/images/@Model.Image" />
                                         </a>
                                     </div>
                                     <div class="d-flex justify-content-center mb-3">
                                         <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="~/images/@Model.Image1" class="item-thumb">
-                                            <img width="60" height="60" class="rounded-2" src="~/images/@Model.Image1" />
+                                            <img width="160" height="160" class="rounded-2" src="~/images/@Model.Image1" />
                                         </a>
                                         <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="~/images/@Model.Image2" class="item-thumb">
-                                            <img width="60" height="60" class="rounded-2" src="~/images/@Model.Image2" />
+                                            <img width="160" height="160" class="rounded-2" src="~/images/@Model.Image2" />
                                         </a>
 
 
@@ -78,11 +139,20 @@
 
 
                    
-                    <div style="color:red" class="col-lg-6">
-                        <h2 style="color:red" class="fw-bold mb-3">Tên sản phẩm :  @Model.ProductName</h2>
-                        <h2 style="color:red;" class="mb-3">
-                            Loại :  @Model.CategoryName</h2>
-                        <h2 class="fw-bold mb-3" style="color:red;">@Model.Price $</h2>
+                    <div  class="col-lg-6">
+                                    <h2 class="product-titlee">@Model.ProductName</h2>
+                                    <div class="product-pricee">
+                                        <p class="new-pricee">Giá Mới: <span>$@Model.Price (5%)</span></p>
+                                    </div>
+                                    <div class="product-detaill">
+                                        <h2>Mô tả sản phẩm: </h2>
+                                        <p> @Model.Describe</p>                             
+                                        <ul>
+                                            <li>Loại sản phẩm : <span>@Model.CategoryName</span></li>
+                                            <li>Khu vực giao hàng: <span>Toàn thế giới</span></li>
+                                            <li>Giá Ship : <span>Miễn phí</span></li>
+                                        </ul>
+                                    </div>                 
                         <div style="color:yellow" class="d-flex mb-4">
                             <i class="fa fa-star "></i>
                             <i class="fa fa-star "></i>
@@ -90,7 +160,7 @@
                             <i class="fa fa-star "></i>
                             <i class="fa fa-star text-secondary"></i>
                         </div>
-                        <h2 style="color:red;" class="mb-4">@Model.Describe</h2>
+                                  
 
                            <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ProductID">
                         <div class="row" style="margin-left:7px">
@@ -132,5 +202,17 @@
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
 
