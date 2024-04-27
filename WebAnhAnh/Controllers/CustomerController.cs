@@ -58,61 +58,7 @@ namespace WebAnhAnh.Controllers
             return View();
         }
 		[HttpPost]
-        //public async Task<IActionResult> Login(LoginRepository model, string? ReturnUrl)
-        //{
-        //    ViewBag.ReturnUrl = ReturnUrl;
-        //    if (ModelState.IsValid)
-        //    {
-        //        var khachHang = db.Customers.SingleOrDefault(kh => kh.CustomerId == model.UserName);
-        //        if (khachHang == null)
-        //        {
-        //            ModelState.AddModelError("loi", "Không có khách hàng này");
-        //        }
-        //        else
-        //        {
-        //            if (!khachHang.Effect)
-        //            {
-        //                ModelState.AddModelError("loi", "Tài khoản đã bị khóa. Vui lòng liên hệ Admin.");
-        //            }
-        //            else
-        //            {
-        //                if (khachHang.PassWord != model.Password.ToMd5Hash(khachHang.RandomKey))
-        //                {
-        //                    ModelState.AddModelError("loi", "Sai thông tin đăng nhập");
-        //                }
-        //                else
-        //                {
-        //                    var claims = new List<Claim> {
-        //                        new Claim(ClaimTypes.Email, khachHang.Email),
-        //                        new Claim(ClaimTypes.Name, khachHang.CustomerName),
-        //                        new Claim(Val.CLAIM_CUSTOMERID, khachHang.CustomerId),
 
-        //						//claim - role động
-        //						new Claim(ClaimTypes.Role, "Customer")
-        //                    };
-
-        //                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-        //                    await HttpContext.SignInAsync(claimsPrincipal);
-
-        //                    if (Url.IsLocalUrl(ReturnUrl))
-        //                    {
-        //                        return Redirect(ReturnUrl);
-        //                    }
-        //                    else
-        //                    {
-        //                        return Redirect("/");
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return View();
-        //}
-
-
-        // Trong CustomerController.cs
         public async Task<IActionResult> Login(LoginRepository model, string? ReturnUrl)
         {
             ViewBag.ReturnUrl = ReturnUrl;
@@ -185,7 +131,7 @@ namespace WebAnhAnh.Controllers
                                 else
                                 {
                                     // Chuyển hướng đến trang admin
-                                    return RedirectToAction("Index", "Admin"); // Thay thế "Index", "Admin" bằng action và controller thực tế của trang admin của bạn
+                                    return RedirectToAction("statistical", "Admin"); 
                                 }
                             }
                         }
@@ -211,5 +157,11 @@ namespace WebAnhAnh.Controllers
 			await HttpContext.SignOutAsync();
 			return Redirect("/");
 		}
-	}
+
+        // Phương thức để đếm số lượng tài khoản đã đăng ký
+        public int GetRegisteredAccountsCount()
+        {
+            return db.Customers.Count();
+        }
+    }
 }

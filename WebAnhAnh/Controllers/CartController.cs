@@ -5,6 +5,9 @@ using WebAnhAnh.Helpers;
 using WebAnhAnh.Repository;
 using Microsoft.AspNetCore.Authorization;
 using WebAnhAnh.Services;
+using System.Net;
+using System.Net.Mail;
+
 namespace WebAnhAnh.Controllers
 {
 	public class CartController : Controller
@@ -69,8 +72,9 @@ namespace WebAnhAnh.Controllers
 			}
 			return RedirectToAction("Index");
 		}
-
-		[Authorize]
+		 
+       
+        [Authorize]
 		[HttpGet]
 		public IActionResult Checkout()
 		{
@@ -129,7 +133,8 @@ namespace WebAnhAnh.Controllers
 					db.Add(hoadon);
 					db.SaveChanges();
 
-					var cthds = new List<OrderDetailId>();
+                   
+                    var cthds = new List<OrderDetailId>();
 					foreach (var item in Cart)
 					{
 						cthds.Add(new OrderDetailId
@@ -146,8 +151,8 @@ namespace WebAnhAnh.Controllers
 					db.Database.CommitTransaction();
 
 					HttpContext.Session.Set<List<CartRepository>>(Val.CART_KEY, new List<CartRepository>());
-
-					return View("Success");
+                   
+                    return View("Success");
 				}
 				catch
 				{
@@ -167,65 +172,7 @@ namespace WebAnhAnh.Controllers
 
 
 
-		//[Authorize]
-
-		//public IActionResult PaymentSuccess(CheckoutRepository model, string payment = "COD")
-		//{
-		//	//Lưu thông tin đơn hàng vào cơ sở dữ liệu
-		//	var customerId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID).Value;
-		//	var khachHang = new Customer();
-		//	if (model.GiongKhachHang)
-		//	{
-		//		khachHang = db.Customers.SingleOrDefault(kh => kh.CustomerId == customerId);
-		//	}
-
-		//	var hoadon = new Order
-		//	{
-		//		CustomerId = customerId,
-		//		CustomerName = model.CustomerName ?? khachHang.CustomerName,
-		//		Address = model.Address ?? khachHang.Address,
-		//		PhoneNumber = model.PhoneNumber ?? khachHang.PhoneNumber,
-		//		OrderDate = DateTime.Now,
-		//		HowToPay = "PayPal",
-		//		StatusId = 2, // Đã thanh toán thành công
-		//		Note = model.Note
-		//	};
-
-		//	db.Database.BeginTransaction();
-		//	try
-		//	{
-		//		db.Add(hoadon);
-		//		db.SaveChanges();
-
-		//		var cthds = new List<OrderDetailId>();
-		//		foreach (var item in Cart)
-		//		{
-		//			cthds.Add(new OrderDetailId
-		//			{
-		//				OrderId = hoadon.OrderId,
-		//				Quantity = item.Quantity,
-		//				Price = item.Price,
-		//				ProductId = item.ProductID,
-		//				Discount = 0
-		//			});
-		//		}
-		//		db.AddRange(cthds);
-		//		db.SaveChanges();
-		//		db.Database.CommitTransaction();
-
-		//		HttpContext.Session.Set<List<CartRepository>>(Val.CART_KEY, new List<CartRepository>());
-
-		//		return View("Success"); // Trả về view "Success" sau khi lưu thành công
-		//	}
-		//	catch
-		//	{
-		//		db.Database.RollbackTransaction();
-		//	}
-
-		//	return RedirectToAction("Index"); // Nếu có lỗi, chuyển hướng đến trang Index
-		//}
-
-
+	
 
 
 		#region Paypal payment
@@ -319,21 +266,6 @@ namespace WebAnhAnh.Controllers
 			return View();
 		}
 
-		//[Authorize]
-		//public IActionResult PaymentCallBack(VnPaymentRequestModell model)
-		//{
-		//	var response = _vnPayservice.PaymentExecute(Request.Query);
-
-		//	if (response == null || response.VnPayResponseCode != "00")
-		//	{
-		//		TempData["Message"] = $"Lỗi thanh toán VN Pay: {response.VnPayResponseCode}";
-		//		return RedirectToAction("PaymentFail");
-		//	}
-		//	// Lưu đơn hàng vô database
-		//	TempData["Message"] = $"Thanh toán VNPay thành công";
-		//	return RedirectToAction("PaymentSuccess");
-		//}
-
 		[Authorize]
 		public IActionResult PaymentCallBack(VnPaymentRequestModel model)
 		{
@@ -395,5 +327,8 @@ namespace WebAnhAnh.Controllers
 			}
 		}
 
-	}
+
+       
+
+    }
 }

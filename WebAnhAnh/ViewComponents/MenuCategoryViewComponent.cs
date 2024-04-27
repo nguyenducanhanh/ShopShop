@@ -9,6 +9,9 @@ namespace WebAnhAnh.ViewComponents
         private readonly ShopShopContext db;
 
         public MenuCategoryViewComponent(ShopShopContext context) => db = context;
+       
+
+      
 
         public IViewComponentResult Invoke()
         {

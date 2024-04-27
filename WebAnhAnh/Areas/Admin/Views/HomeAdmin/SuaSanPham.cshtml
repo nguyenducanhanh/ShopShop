@@ -30,16 +30,19 @@
             <div class="form-group">
                 <label asp-for="Image" class="control-label">ẢNH CHÍNH</label>
                 <input type="file" asp-for="Image" class="form-control" />
+                <input type="hidden" asp-for="Image" value="@Model.Image" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image1" class="control-label">ẢNH PHỤ 1</label>
                 <input type="file" asp-for="Image1" class="form-control" />
+                <input type="hidden" asp-for="Image1" value="@Model.Image1" />
                 <span asp-validation-for="Image1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image2" class="control-label">ẢNH PHỤ 2</label>
                 <input type="file" asp-for="Image2" class="form-control" />
+                <input type="hidden" asp-for="Image2" value="@Model.Image2" />
                 <span asp-validation-for="Image2" class="text-danger"></span>
             </div>
             @*   <div class="form-group">
@@ -69,7 +72,4 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

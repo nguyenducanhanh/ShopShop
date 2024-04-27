@@ -3,7 +3,7 @@
 @using X.PagedList.Mvc.Core;
 @model X.PagedList.BasePagedList<Product>
 @{
-    ViewData["Title"] = "ListProducts";
+    ViewData["Title"] = "danh sách sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -119,6 +119,34 @@
         </ul>
     </nav>
 </div>
+
+
+
+<a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a>
+
+
+<!-- Modal Search Start -->
+
+<div class="modal fade" id="searchModalll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search by products</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="SearchForm" asp-action="Search" asp-controller="Product">
+                <div class="input-group w-100 mx-auto d-flex">
+                    <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="searchButton" name="query" id="searchText">
+                    <span id="searchButton" class="input-group-text p-3" onclick="SearchForm.submit()"><img src="~/images/search-icon.png"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Search End -->
+
+
 
 <style>
     .pagination {

@@ -5,8 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title> @ViewData["Title"] </title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dT4w8YeH9D2/HLexMU8mIcP9KqFVvT2p8+6pFyS3fjmlAar4sKcWSD4aCmzjrmvW9jTJkFZ0HcR3/Ga9jsv/Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="../../LayoutAdmin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../LayoutAdmin/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
@@ -17,7 +19,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../LayoutAdmin/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../LayoutAdmin/assets/images/favicon.ico" />
+    @* <link rel="shortcut icon" href="../../LayoutAdmin/assets/images/favicon.ico" /> *@
 </head>
 <body>
     <div class="container-scroller">
@@ -46,14 +48,15 @@
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Duc Anh</p>
+                                <p class="mb-1 text-black">@Context.User.Identity.Name</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" asp-controller="Customer" asp-action="Logout">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Đăng Xuất
                             </a>
+                        
                         </div>
                     </li>
                     <li class="nav-item d-none d-lg-block full-screen-link">
@@ -172,25 +175,25 @@
                 <ul class="nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" asp-area="admin" asp-controller="Statistical" asp-action="Index">
                             <span class="menu-title">Thống Kê</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ListProducts">
                             <span class="menu-title">Sản Phẩm</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                            <i class="mdi mdi-table-large menu-icon"></i>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ListProducts">Sản Phẩm</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="Categories" asp-action="List">Hãng Sản Phẩm</a></li>
-                               
-                            </ul>
-                        </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="admin" asp-area="admin" asp-controller="Categories" asp-action="List">
+                            <span class="menu-title">Hãng Sản Phẩm</span>
+                            <i class="mdi mdi-chart-bar menu-icon"></i>
+                        </a>
+                    </li>
+
+                  
                     <li class="nav-item">
                         <a class="nav-link" asp-area="admin" asp-controller="Orders" asp-action="Index">
                             <span class="menu-title">Hóa Đơn</span>
@@ -203,18 +206,7 @@
                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/charts/chartjs.html">
-                            <span class="menu-title">Charts</span>
-                            <i class="mdi mdi-chart-bar menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/tables/basic-table.html">
-                            <span class="menu-title">Tables</span>
-                            <i class="mdi mdi-table-large menu-icon"></i>
-                        </a>
-                    </li>
+                   
                     
                     <li class="nav-item sidebar-actions">
                         <span class="nav-link">

@@ -142,7 +142,7 @@
                     <div  class="col-lg-6">
                                     <h2 class="product-titlee">@Model.ProductName</h2>
                                     <div class="product-pricee">
-                                        <p class="new-pricee">Giá Mới: <span>$@Model.Price (5%)</span></p>
+                                        <p class="new-pricee">Giá Bán : <span>$@Model.Price (usd)</span></p>
                                     </div>
                                     <div class="product-detaill">
                                         <h2>Mô tả sản phẩm: </h2>
@@ -176,8 +176,6 @@
                      </div>
                 </div>
             </div>
-           
-            <div class="seemore_bt"><a href="#">See More</a></div>
         </div>
     </div>
     <!-- watchs section end -->
@@ -212,6 +210,48 @@
 
 
 
+
+
+
+
+        <!-- background bg start -->
+        <div class="background_bg">
+            <!-- watchs section start -->
+            <div class="watchs_section layout_padding">
+                <div class="container">
+                    <h1 class="watchs_taital">SẢN PHẨM CỦA CHÚNG TÔI : </h1> <br /> <br />
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        SẢN PHẨM MỚI NHẤT
+                    </h2>
+                    @await Component.InvokeAsync("NewProduct")
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        ....................................
+                    </h2>
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        SẢN PHẨM GIÁ LỚN NHẤT
+                    </h2>
+                    @await Component.InvokeAsync("MaxProduct")
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        ....................................
+                    </h2>
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        SẢN PHẨM GIÁ NHỎ NHẤT
+                    </h2>
+                    @await Component.InvokeAsync("MinProduct")
+                    <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                        ....................................
+                    </h2>
+                    <div class="seemore_bt"><a asp-controller="Product" asp-action="Index">Xem Thêm</a></div>
+                </div>
+            </div>
+            <!-- watchs section end -->
+            <!-- about section start -->
+            <!-- testimonial section start -->
+           
+
+
+            <!-- testimonial section end -->
+        </div>
 
 
 

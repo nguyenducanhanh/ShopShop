@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>SUA</h1>
 
 <h4>Customer</h4>
 <hr />
@@ -20,11 +20,19 @@
                 <input asp-for="CustomerName" class="form-control" />
                 <span asp-validation-for="CustomerName" class="text-danger"></span>
             </div>
-           <div class="form-group">
+        @*    <div class="form-group">
                 <label asp-for="PassWord" class="control-label"></label>    
                 <input  asp-for="PassWord" class="form-control" />
                 <span asp-validation-for="PassWord" class="text-danger"></span>
-            </div> 
+            </div>  *@
+            <div class="form-group">
+                <label asp-for="PassWord" class="control-label"></label>
+                <!-- Không hiển thị trường mật khẩu -->
+                <input asp-for="PassWord" class="form-control" readonly />
+                <!-- Trường ẩn để truyền mật khẩu hiện tại qua khi cần -->
+                <input type="hidden" asp-for="PassWord" />
+            </div>
+
             <div class="form-group">
                 <label asp-for="DateOfBirth" class="control-label"></label>
                 <input asp-for="DateOfBirth" class="form-control" />

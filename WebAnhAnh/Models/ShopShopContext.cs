@@ -19,7 +19,7 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
-    public virtual DbSet<KhachHang> KhachHangs { get; set; }
+    public virtual DbSet<Link> Links { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
@@ -27,14 +27,12 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<Staff> Staff { get; set; }
-
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
-
+    public virtual DbSet<WebsiteInformation> WebsiteInformations { get; set; }
+   
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=MACBOOK\\SQLEXPRESS;Initial Catalog=ShopShop;Persist Security Info=True;User ID=sa;Password=12345;Encrypt=True;Trust Server Certificate=True");
@@ -66,30 +64,12 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.RandomKey).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<KhachHang>(entity =>
+        modelBuilder.Entity<Link>(entity =>
         {
-            entity.HasKey(e => e.MaKhanhHang);
+            entity.ToTable("Link");
 
-            entity.ToTable("KhachHang");
-
-            entity.Property(e => e.MaKhanhHang)
-                .HasMaxLength(25)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.DiaChi).HasMaxLength(150);
-            entity.Property(e => e.SoDienThoai)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.TenKhachHang).HasMaxLength(100);
-            entity.Property(e => e.UserName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength();
-
-            entity.HasOne(d => d.UserNameNavigation).WithMany(p => p.KhachHangs)
-                .HasForeignKey(d => d.UserName)
-                .HasConstraintName("FK_KhachHang_User");
+            entity.Property(e => e.LinkId).HasColumnName("LinkID");
+            entity.Property(e => e.LinkYtb).HasColumnName("LinkYTB");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -162,27 +142,6 @@ public partial class ShopShopContext : DbContext
                 .HasConstraintName("FK_Product_Supplier");
         });
 
-        modelBuilder.Entity<Staff>(entity =>
-        {
-            entity.Property(e => e.StaffId)
-                .HasMaxLength(25)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.StaffName).HasMaxLength(100);
-            entity.Property(e => e.UserName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength();
-
-            entity.HasOne(d => d.UserNameNavigation).WithMany(p => p.Staff)
-                .HasForeignKey(d => d.UserName)
-                .HasConstraintName("FK_Staff_User");
-        });
-
         modelBuilder.Entity<Status>(entity =>
         {
             entity.ToTable("Status");
@@ -207,20 +166,14 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.PhoneNumber).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<WebsiteInformation>(entity =>
         {
-            entity.HasKey(e => e.UserName);
+            entity.ToTable("WebsiteInformation");
 
-            entity.ToTable("User");
-
-            entity.Property(e => e.UserName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.Password)
-                .HasMaxLength(256)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Address).HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.StoreName).HasMaxLength(30);
         });
 
         OnModelCreatingPartial(modelBuilder);

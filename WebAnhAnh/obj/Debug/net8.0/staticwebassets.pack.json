@@ -753,8 +753,44 @@
       "PackagePath": "staticwebassets\\images\\BanHoc.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\Banananana.png",
+      "PackagePath": "staticwebassets\\images\\Banananana.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\Bantrangdiem.png",
       "PackagePath": "staticwebassets\\images\\Bantrangdiem.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GS01.png",
+      "PackagePath": "staticwebassets\\images\\GS01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GS02.png",
+      "PackagePath": "staticwebassets\\images\\GS02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GS03.png",
+      "PackagePath": "staticwebassets\\images\\GS03.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GV01.png",
+      "PackagePath": "staticwebassets\\images\\GV01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GV02.png",
+      "PackagePath": "staticwebassets\\images\\GV02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GV03.png",
+      "PackagePath": "staticwebassets\\images\\GV03.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GV04.png",
+      "PackagePath": "staticwebassets\\images\\GV04.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\GV05.png",
+      "PackagePath": "staticwebassets\\images\\GV05.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\M1.png",
@@ -769,6 +805,66 @@
       "PackagePath": "staticwebassets\\images\\M3.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG01.png",
+      "PackagePath": "staticwebassets\\images\\MG01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG02.png",
+      "PackagePath": "staticwebassets\\images\\MG02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG03.png",
+      "PackagePath": "staticwebassets\\images\\MG03.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG04.png",
+      "PackagePath": "staticwebassets\\images\\MG04.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG05.png",
+      "PackagePath": "staticwebassets\\images\\MG05.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG06.png",
+      "PackagePath": "staticwebassets\\images\\MG06.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG07.png",
+      "PackagePath": "staticwebassets\\images\\MG07.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG08.png",
+      "PackagePath": "staticwebassets\\images\\MG08.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG09.png",
+      "PackagePath": "staticwebassets\\images\\MG09.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG10.png",
+      "PackagePath": "staticwebassets\\images\\MG10.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG11.png",
+      "PackagePath": "staticwebassets\\images\\MG11.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG12.png",
+      "PackagePath": "staticwebassets\\images\\MG12.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG13.png",
+      "PackagePath": "staticwebassets\\images\\MG13.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG14.png",
+      "PackagePath": "staticwebassets\\images\\MG14.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\MG15.png",
+      "PackagePath": "staticwebassets\\images\\MG15.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\anhnenkk.jpg",
       "PackagePath": "staticwebassets\\images\\anhnenkk.jpg"
     },
@@ -781,20 +877,8 @@
       "PackagePath": "staticwebassets\\images\\banner-bg.png"
     },
     {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\blackdog.jpg",
-      "PackagePath": "staticwebassets\\images\\blackdog.jpg"
-    },
-    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\call-icon.png",
       "PackagePath": "staticwebassets\\images\\call-icon.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\client-img.png",
-      "PackagePath": "staticwebassets\\images\\client-img.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\client-img1.png",
-      "PackagePath": "staticwebassets\\images\\client-img1.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\fb-icon.png",
@@ -829,6 +913,66 @@
       "PackagePath": "staticwebassets\\images\\header-bg.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs01.png",
+      "PackagePath": "staticwebassets\\images\\hs01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs02.png",
+      "PackagePath": "staticwebassets\\images\\hs02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs04.png",
+      "PackagePath": "staticwebassets\\images\\hs04.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs06.png",
+      "PackagePath": "staticwebassets\\images\\hs06.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs07.png",
+      "PackagePath": "staticwebassets\\images\\hs07.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs08.png",
+      "PackagePath": "staticwebassets\\images\\hs08.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs09.png",
+      "PackagePath": "staticwebassets\\images\\hs09.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs10.png",
+      "PackagePath": "staticwebassets\\images\\hs10.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs11.png",
+      "PackagePath": "staticwebassets\\images\\hs11.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs12.png",
+      "PackagePath": "staticwebassets\\images\\hs12.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs13.png",
+      "PackagePath": "staticwebassets\\images\\hs13.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs14.png",
+      "PackagePath": "staticwebassets\\images\\hs14.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs16.png",
+      "PackagePath": "staticwebassets\\images\\hs16.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs17.png",
+      "PackagePath": "staticwebassets\\images\\hs17.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\hs18.png",
+      "PackagePath": "staticwebassets\\images\\hs18.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\instagram-icon.png",
       "PackagePath": "staticwebassets\\images\\instagram-icon.png"
     },
@@ -839,10 +983,6 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logol.png",
       "PackagePath": "staticwebassets\\images\\logol.png"
-    },
-    {
-      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\logon.png",
-      "PackagePath": "staticwebassets\\images\\logon.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\mail-icon.png",
@@ -861,6 +1001,10 @@
       "PackagePath": "staticwebassets\\images\\search-icon.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\sua.png",
+      "PackagePath": "staticwebassets\\images\\sua.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\testimonial-bg.png",
       "PackagePath": "staticwebassets\\images\\testimonial-bg.png"
     },
@@ -875,6 +1019,10 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\watchs-bg.png",
       "PackagePath": "staticwebassets\\images\\watchs-bg.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\xoa.png",
+      "PackagePath": "staticwebassets\\images\\xoa.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\youtub-icon.png",

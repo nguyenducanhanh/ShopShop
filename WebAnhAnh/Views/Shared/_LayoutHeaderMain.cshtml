@@ -18,7 +18,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">Về Chúng Tôi</a>
+                        <a class="nav-link" asp-controller="AboutUs" asp-action="AboutUs">Về Chúng Tôi</a>
                         </li>
                          <li class="nav-item">
                         <a class="nav-link " asp-controller="Customer" asp-action="Login">Đăng Nhập</a>
@@ -42,8 +42,8 @@
                 <li class="active"><a href="/">Trang Chủ</a></li>
                
                 <li><a asp-controller="Product" asp-action="Index">Sản Phẩm</a></li>
-                <li><a href="#">Dịch Vụ</a></li>
-                <li><a href="#">Về Chúng Tôi</a></li>
+              
+                <li><a asp-controller="AboutUs" asp-action="AboutUs">Về Chúng Tôi</a></li>
                @*  <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li> *@
                 <li><a asp-controller="Customer" asp-action="Login">Đăng Nhập</a></li>
                @*  <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li> *@

@@ -15,29 +15,6 @@ namespace WebAnhAnh.Controllers
         }
 
 
-
-        //public IActionResult Index(int? category)
-        //{
-        //    var products = db.Products.AsQueryable();
-
-        //    if (category.HasValue)
-        //    {
-        //        products = products.Where(p => p.CategoryId == category.Value);
-        //    }
-
-        //    var result = products.Select(p => new ProductsRepository
-        //    {
-        //        ProductID = p.ProductId,
-        //        ProductName = p.ProductName,
-        //        Price = p.Price ?? 0,
-        //        Image = p.Image ?? "",
-        //        Image1 = p.Image1 ?? "",
-        //        Image2 = p.Image2 ?? "",
-        //        Describe = p.Describe ?? "",
-        //        CategoryName = p.Category.CategoryName,
-        //    });
-        //    return View(result);
-        //}
         public IActionResult Index(int? category, int page = 1, int pageSize = 8)
         {
             var products = db.Products.AsQueryable();
@@ -71,13 +48,15 @@ namespace WebAnhAnh.Controllers
             return View(result);
         }
 
+       
         public IActionResult Search(string? query)
         {
             var products = db.Products.AsQueryable();
 
-            if (query != null)
+            if (!string.IsNullOrEmpty(query))
             {
-                products = products.Where(p => p.ProductName.Contains(query));
+                // Tìm kiếm theo tên sản phẩm hoặc hãng sản phẩm
+                products = products.Where(p => p.ProductName.Contains(query) || p.Category.CategoryName.Contains(query));
             }
 
             var result = products.Select(p => new ProductsRepository
@@ -118,5 +97,9 @@ namespace WebAnhAnh.Controllers
           };
             return View(result);
         }
+
+      
+
+
     }
 }

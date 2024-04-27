@@ -2,41 +2,41 @@
     ViewData["Title"] = "Home Page";
     Layout = "_LayoutHome";
 }
-@model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
+@model IEnumerable<WebAnhAnh.Repository.ProductsRepository> 
+
 @await Component.InvokeAsync("MenuCategory")
+
+
+
+
 <!-- background bg start -->
- <div class="background_bg">
+<div class="background_bg">
     <!-- watchs section start -->
     <div class="watchs_section layout_padding">
         <div class="container">
-            <h1 class="watchs_taital">Our Products</h1> <br />
-            <div class="watchs_section_2">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="image_1"><img src="images/BanAn03.png"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="uni_text">Uni Watch</h4>
-                        <p class="watchs_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                        <h4 class="rate_text"><span style="color: #b60213;">$</span>100</h4>
-                        <div class="read_bt1"><a href="#">Buy Now</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="watchs_section_3">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="uni_text">Uni Watch</h4>
-                        <p class="watchs_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                        <h4 class="rate_text"><span style="color: #b60213;">$</span>100</h4>
-                        <div class="read_bt1"><a href="#">Buy Now</a></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="image_2"><img src="images/BanAn02.png"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="seemore_bt"><a asp-controller="Product" asp-action="Index">See More</a></div>
+            <h1 class="watchs_taital">SẢN PHẨM CỦA CHÚNG TÔI : </h1> <br /> <br />
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM MỚI NHẤT
+            </h2> 
+            @await Component.InvokeAsync("NewProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM GIÁ LỚN NHẤT
+            </h2> 
+            @await Component.InvokeAsync("MaxProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM GIÁ NHỎ NHẤT
+            </h2> 
+            @await Component.InvokeAsync("MinProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <div class="seemore_bt"><a asp-controller="Product" asp-action="Index">Xem Thêm</a></div>
         </div>
     </div>
     <!-- watchs section end -->
@@ -44,26 +44,26 @@
     <!-- testimonial section start -->
     <div class="testimonial_section layout_padding">
         <div class="container">
-            <h1 class="watchs_taital">Testimonial</h1>
+            <h1 class="watchs_taital">Cửa Hàng Chúng Tôi</h1>
             <div class="testimonial_section_2">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="box_main">
-                            <p class="testimonial_text">Sử dụng đồ gia dụng làm từ gỗ có thể mang lại nhiều lợi ích : Gỗ thường được biết đến với tính chất bền bỉ và độ bền cao, đặc biệt là khi được chế biến và bảo quản đúng cách.Vẻ đẹp tự nhiên: Gỗ mang lại vẻ đẹp tự nhiên và ấm áp cho không gian sống. Mỗi mảnh gỗ đều có độ hoàn thiện riêng, tạo nên sự độc đáo cho sản phẩm.</p>
-                        </div>
-                     
-                    </div>
-                    <div class="col-md-6">
-                        <div class="box_main">
-                            <p class="testimonial_text">Sự đa dạng về mẫu mã và kiểu dáng: Gỗ có thể được chế tác thành nhiều kiểu dáng và mẫu mã khác nhau, từ truyền thống đến hiện đại, phục vụ nhu cầu và sở thích của mọi người.Tính thân thiện với môi trường,việc sử dụng đồ gia dụng bằng gỗ có thể giúp hỗ trợ bảo vệ môi trường..</p>
-                        </div>
-                        
-                    </div>
+                <div class="box_main">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/8-UsY1gOOsE" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="seemore_bt_1"><a>HẾT</a></div>
+            <div id="scrollToTop" class="seemore_bt_1"><a>&#9650;</a></div>
         </div>
     </div>
     <!-- testimonial section end -->
-</div> 
+</div>
+
+
+<script>
+    document.getElementById('scrollToTop').addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Lăn lên một cách mượt mà
+        });
+    });
+</script>
+
 

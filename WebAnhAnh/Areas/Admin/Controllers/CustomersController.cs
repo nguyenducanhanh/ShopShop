@@ -48,21 +48,7 @@ namespace WebAnhAnh.Areas.Admin.Controllers
 
         [Route("Edit")]
         [HttpGet]
-        // GET: Admin/Customers/Edit/5
-        //public async Task<IActionResult> Edit(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var customer = await _context.Customers.FindAsync(id);
-        //    if (customer == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(customer);
-        //}
+        
         public IActionResult Edit(string id)
         {
             var sp = db.Customers.Find(id);
@@ -71,56 +57,46 @@ namespace WebAnhAnh.Areas.Admin.Controllers
         [Route("edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Customer sp)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sp).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("index", "Customers");
-            }
-            return View(sp);
-        }
+		//public IActionResult Edit(Customer sp)
+		//{
+		//    if (ModelState.IsValid)
+		//    {
+		//        db.Entry(sp).State = EntityState.Modified;
+		//        db.SaveChanges();
+		//        return RedirectToAction("index", "Customers");
+		//    }
+		//    return View(sp);
+		//}
+
+		public IActionResult Edit(Customer sp)
+		{
+			if (ModelState.IsValid)
+			{
+				// Lấy thông tin khách hàng từ cơ sở dữ liệu
+				var existingCustomer = db.Customers.Find(sp.CustomerId);
+
+				// Cập nhật thông tin của khách hàng (ngoại trừ mật khẩu)
+				existingCustomer.CustomerName = sp.CustomerName;
+				existingCustomer.DateOfBirth = sp.DateOfBirth;
+				existingCustomer.Address = sp.Address;
+				existingCustomer.PhoneNumber = sp.PhoneNumber;
+				existingCustomer.Email = sp.Email;
+				existingCustomer.Effect = sp.Effect;
+				existingCustomer.Role = sp.Role;
+
+				db.Entry(existingCustomer).State = EntityState.Modified;
+				db.SaveChanges();
+				return RedirectToAction("index", "Customers");
+			}
+			return View(sp);
+		}
 
 
 
-        // POST: Admin/Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
-        //public async Task<IActionResult> Edit(string id, [Bind("CustomerId,PassWord,CustomerName,DateOfBirth,Address,PhoneNumber,Email,Effect,Role,RandomKey,IsAdmin")] Customer customer)
-        //{
-        //    if (id != customer.CustomerId)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(customer);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!CustomerExists(customer.CustomerId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction("index", "customers");
-        //        //return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(customer);
-        //}
 
 
-        [Route("Delete")]
+
+		[Route("Delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(string id)

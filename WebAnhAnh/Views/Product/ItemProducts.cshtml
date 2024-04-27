@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
+﻿ @model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
 
 
      @foreach (var item in Model)
@@ -20,5 +20,85 @@
     </div> 
 
     }
+
+
+<div class="about_section_3">
+    <!-- Pagination -->
+    @if (ViewBag.TotalPages > 1)
+    {
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+<!-- End Pagination -->
+
+
+<!-- background bg start -->
+<div class="background_bg">
+    <!-- watchs section start -->
+    <div class="watchs_section layout_padding">
+        <div class="container">
+            <h1 class="watchs_taital">SẢN PHẨM CỦA CHÚNG TÔI : </h1> <br /> <br />
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM MỚI NHẤT
+            </h2>
+            @await Component.InvokeAsync("NewProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM GIÁ LỚN NHẤT
+            </h2>
+            @await Component.InvokeAsync("MaxProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                SẢN PHẨM GIÁ NHỎ NHẤT
+            </h2>
+            @await Component.InvokeAsync("MinProduct")
+            <h2 style=" text-align: center;color: #b60213;font-size: 24px;font-weight: bold;text-transform: uppercase;margin-bottom: 20px;">
+                ....................................
+            </h2>
+            <div class="seemore_bt"><a asp-controller="Product" asp-action="Index">Xem Thêm</a></div>
+        </div>
+    </div>
+    <!-- watchs section end -->
+    <!-- about section start -->
+    <!-- testimonial section start -->
+    <!-- testimonial section end -->
+</div>
+
+
+<!-- testimonial section start -->
+<div class="testimonial_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Cửa Hàng Chúng Tôi</h1>
+        <div class="testimonial_section_2">
+            <div class="box_main">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/8-UsY1gOOsE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div id="scrollToTop" class="seemore_bt_1"><a>&#9650;</a></div>
+    </div>
+</div>
+<!-- testimonial section end -->
+</div>
+
+
+<script>
+    document.getElementById('scrollToTop').addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Lăn lên một cách mượt mà
+        });
+    });
+</script>
 
 

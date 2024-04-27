@@ -1,32 +1,4 @@
-﻿@* @model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
-@{
-    ViewData["Title"] = "Products";
-    Layout = "_LayoutProducts";
-}
-
-
-
-
-<div class="background_bg">
-    <div class="about_section layout_padding">
-        <div class="container">
-            <h2 style="color:red" class="watchs_taital">
-                @await Component.InvokeAsync("MenuCategory")
-            <br> Total:   @Model.Count() Product 
-            </h2>
-
-            <div class="about_section_3">
-                <div class="row">
-                    @await Html.PartialAsync("ItemProducts", Model)
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
- *@
-
+﻿
 
 
  @model IEnumerable<WebAnhAnh.Repository.ProductsRepository>
@@ -34,13 +6,13 @@
     ViewData["Title"] = "Products";
     Layout = "_LayoutProducts";
 }
-
+@await Component.InvokeAsync("MenuCategory")
 <div class="background_bg">
     <div class="about_section layout_padding">
         <div class="container">
             <h4 style="color:red" class="watchs_taital">
-                @await Component.InvokeAsync("MenuCategory")
-                <br /> @* Tổng: @Model.Count() sản phẩm *@
+               SẢN PHẨM CỦA CHÚNG TÔI
+             @*    Tổng: @Model.Count() sản phẩm  *@
             </h4>
 
             <div class="about_section_3">
@@ -48,7 +20,7 @@
                     @await Html.PartialAsync("ItemProducts", Model)
                 </div>
             </div>
-            <div class="about_section_3">
+         @*    <div class="about_section_3">
             <!-- Pagination -->
             @if (ViewBag.TotalPages > 1)
             {
@@ -63,6 +35,6 @@
             }
             </div>
             <!-- End Pagination -->
-        </div>
+        </div> *@
     </div>
 </div>

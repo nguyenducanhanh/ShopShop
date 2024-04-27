@@ -3,7 +3,7 @@
 @using X.PagedList.Mvc.Core;
 @model X.PagedList.BasePagedList<Order>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
 
@@ -20,10 +20,10 @@
 <table class="table">
     <thead>
         <tr class="table-warning">
-            <th>
+            @*  <th>
                 NGÀY ĐẶT
             </th>
-           @*  <th>
+            <th>
                 @Html.DisplayNameFor(model => model.DeliveryDate)
             </th> *@
             <th>
@@ -72,10 +72,10 @@
                 cls = "table-primary";
             }
             <tr class="@cls">
-            <td>
+                @*   <td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
-            @* <td>
+           <td>
                 @Html.DisplayFor(modelItem => item.DeliveryDate)
             </td> *@
             <td>
@@ -103,14 +103,17 @@
              <td>
                 @item.Status.StatusName
             </td>  
-                <td>
-                    <div class="btn-group" role="group" aria-label="Edit and Delete">
-                        <a class="btn btn-primary" href="@Url.Action("Details", new { id = item.OrderId })">CHI TIẾT</a>
+              <td>
+                    <div  class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a  class="btn btn-primary" href="@Url.Action("Details", new { id = item.OrderId })">CHI TIẾT</a>
                         <form id="deleteForm-@item.OrderId" asp-action="Delete" asp-route-id="@item.OrderId" method="post">
                             <button type="button" onclick="confirmDelete('@item.OrderId')" class="btn btn-danger">XÓA</button>
                         </form>
                     </div>
-                </td>
+                </td> 
+
+               
+
 
 
         </tr>

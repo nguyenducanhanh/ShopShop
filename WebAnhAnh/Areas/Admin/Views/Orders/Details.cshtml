@@ -1,14 +1,12 @@
-﻿
-
-
-@model WebAnhAnh.Models.Order
+﻿@model WebAnhAnh.Models.Order
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Chi tiết Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../LayoutAdmin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../LayoutAdmin/assets/vendors/css/vendor.bundle.base.css">
@@ -175,25 +173,24 @@
                 <ul class="nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html">
+                        <a class="nav-link" asp-area="admin" asp-controller="Statistical" asp-action="Index">
                             <span class="menu-title">Thống Kê</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ListProducts">
                             <span class="menu-title">Sản Phẩm</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                            <i class="mdi mdi-home menu-icon"></i>
                         </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="ListProducts">Sản Phẩm</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="Categories" asp-action="List">Hãng Sản Phẩm</a></li>
-
-                            </ul>
-                        </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="admin" asp-area="admin" asp-controller="Categories" asp-action="List">
+                            <span class="menu-title">Hãng Sản Phẩm</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link" asp-area="admin" asp-controller="Orders" asp-action="Index">
                             <span class="menu-title">Hóa Đơn</span>
