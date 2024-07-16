@@ -877,6 +877,10 @@
       "PackagePath": "staticwebassets\\images\\banner-bg.png"
     },
     {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\bb.png",
+      "PackagePath": "staticwebassets\\images\\bb.png"
+    },
+    {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\call-icon.png",
       "PackagePath": "staticwebassets\\images\\call-icon.png"
     },
@@ -907,6 +911,66 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\giuong07.png",
       "PackagePath": "staticwebassets\\images\\giuong07.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu01.png",
+      "PackagePath": "staticwebassets\\images\\gu01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu02.png",
+      "PackagePath": "staticwebassets\\images\\gu02.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu03.png",
+      "PackagePath": "staticwebassets\\images\\gu03.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu04.png",
+      "PackagePath": "staticwebassets\\images\\gu04.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu05.png",
+      "PackagePath": "staticwebassets\\images\\gu05.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu06.png",
+      "PackagePath": "staticwebassets\\images\\gu06.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu07.png",
+      "PackagePath": "staticwebassets\\images\\gu07.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gu08.png",
+      "PackagePath": "staticwebassets\\images\\gu08.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gv06.png",
+      "PackagePath": "staticwebassets\\images\\gv06.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gv07.png",
+      "PackagePath": "staticwebassets\\images\\gv07.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gv08.png",
+      "PackagePath": "staticwebassets\\images\\gv08.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gv09.png",
+      "PackagePath": "staticwebassets\\images\\gv09.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gvv.png",
+      "PackagePath": "staticwebassets\\images\\gvv.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gvv01.png",
+      "PackagePath": "staticwebassets\\images\\gvv01.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\gvv03.png",
+      "PackagePath": "staticwebassets\\images\\gvv03.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\header-bg.png",
@@ -995,6 +1059,10 @@
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\map-img.png",
       "PackagePath": "staticwebassets\\images\\map-img.png"
+    },
+    {
+      "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\pp.png",
+      "PackagePath": "staticwebassets\\images\\pp.png"
     },
     {
       "Id": "E:\\WebAnhAnh\\WebAnhAnh\\wwwroot\\images\\search-icon.png",

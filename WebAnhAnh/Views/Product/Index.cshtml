@@ -20,21 +20,5 @@
                     @await Html.PartialAsync("ItemProducts", Model)
                 </div>
             </div>
-         @*    <div class="about_section_3">
-            <!-- Pagination -->
-            @if (ViewBag.TotalPages > 1)
-            {
-                <ul class="pagination justify-content-center">
-                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                    {
-                        <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                        </li>
-                    }
-                </ul>
-            }
-            </div>
-            <!-- End Pagination -->
-        </div> *@
     </div>
 </div>

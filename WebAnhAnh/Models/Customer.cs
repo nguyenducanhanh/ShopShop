@@ -27,5 +27,9 @@ public partial class Customer
 
     public bool? IsAdmin { get; set; }
 
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 }

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Models;
 using X.PagedList;
 using System.Linq;
+using WebAnhAnh.Repository;
 
 namespace WebAnhAnh.Areas.Admin.Controllers
 {
@@ -37,6 +38,28 @@ namespace WebAnhAnh.Areas.Admin.Controllers
             // Paginate the filtered products
             PagedList<Product> lst = new PagedList<Product>(products, pageNumber, pageSize);
             return View(lst);
+        }
+        [Route("SearchProducts")]
+        public IActionResult SearchProducts(string? query)
+        {
+            var products = db.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                // Tìm kiếm theo tên sản phẩm hoặc hãng sản phẩm
+                products = products.Where(p => p.ProductName.Contains(query) || p.Category.CategoryName.Contains(query));
+            }
+
+            var result = products.Select(p => new ProductsRepository
+            {
+                ProductID = p.ProductId,
+                ProductName = p.ProductName,
+                Price = p.Price ?? 0,
+                Image = p.Image ?? "",
+                Describe = p.Describe ?? "",
+                CategoryName = p.Category.CategoryName,
+            });
+            return View(result);
         }
 
         [Route("ThemSanPhamMoi")]

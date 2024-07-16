@@ -23,20 +23,20 @@
                          <li class="nav-item">
                         <a class="nav-link " asp-controller="Customer" asp-action="Login">Đăng Nhập</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link " asp-controller="Customer" asp-action="Register">Register</a>
-                        </li>
+                    
                        
                         <li class="nav-item">
                         <a data-bs-toggle="modal" data-bs-target="#searchModalll" class="nav-link " href="#"><img src="~/images/search-icon.png"></a>
-                      
-                        </li>
+
+                    </li>   @await Component.InvokeAsync("Cart")
                     </ul>
                 </div>
             </nav>
         </div>
         <div class="container-fluid">
             <div class="logo"><a href="#"><img src="~/images/logol.png"></a></div>
+             @if (User.Identity.IsAuthenticated)
+    {
             <div class="menu_main">
                 <ul>
                 <li class="active"><a href="/">Trang Chủ</a></li>
@@ -45,12 +45,38 @@
               
                 <li><a asp-controller="AboutUs" asp-action="AboutUs">Về Chúng Tôi</a></li>
                @*  <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li> *@
-                <li><a asp-controller="Customer" asp-action="Login">Đăng Nhập</a></li>
+                    <li><a asp-controller="Customer" asp-action="Profile">Bạn</a></li>
+                   
                @*  <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li> *@
                 <li><a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a></li>
                 @await Component.InvokeAsync("Cart")
                 </ul>
             </div>
+             }
+    else
+        {
+            <div class="menu_main">
+                <ul>
+                    <li ><a href="/">Trang Chủ</a></li>
+
+
+                    <li >
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sản Phẩm</a>
+                        <div  class="dropdown-menu m-0 bg-secondary rounded-0">
+                            @await Component.InvokeAsync("Menuii")
+                            <a asp-controller="Product" asp-action="Index">Tất cả sản Phẩm</a>
+                        </div>
+                    </li>
+                    <li><a asp-controller="AboutUs" asp-action="AboutUs">Về Chúng Tôi</a></li>
+                    @*  <li><a asp-controller="Customer" asp-action="Register">dang ky </a></li> *@
+                    <li><a asp-controller="Customer" asp-action="Login">Đăng Nhập</a></li>
+                    
+                    @*  <li><a asp-controller="Customer" asp-action="Profile">Profile</a></li> *@
+                    <li><a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a></li>
+                    @await Component.InvokeAsync("Cart")
+                </ul>
+            </div>
+    }
         </div>
     </div>
 

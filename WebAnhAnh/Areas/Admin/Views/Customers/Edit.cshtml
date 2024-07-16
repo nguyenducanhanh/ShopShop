@@ -5,9 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
 
-<h1>SUA</h1>
 
-<h4>Customer</h4>
+<h1 style="text-align: center;">Thông Tin Tài Khoản </h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,7 +26,7 @@
                 <span asp-validation-for="PassWord" class="text-danger"></span>
             </div>  *@
             <div class="form-group">
-                <label asp-for="PassWord" class="control-label"></label>
+                <label asp-for="PassWord" class="control-label">Mật khẩu </label>
                 <!-- Không hiển thị trường mật khẩu -->
                 <input asp-for="PassWord" class="form-control" readonly />
                 <!-- Trường ẩn để truyền mật khẩu hiện tại qua khi cần -->
@@ -34,17 +34,17 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
+                <label asp-for="DateOfBirth" class="control-label">Năm sinh</label>
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Địa chỉ</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
+                <label asp-for="PhoneNumber" class="control-label"> Số điện thoại </label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
@@ -54,13 +54,18 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
+              
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Effect" /> @Html.DisplayNameFor(model => model.Effect)
                 </label>
+                <span class="form-text text-muted">( bỏ tích để khóa tài khoản )</span>
             </div>
             <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
+                <label asp-for="Role" class="control-label">Quyền</label>
+                <select asp-for="Role" class="form-control">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                </select>
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
 
@@ -72,7 +77,5 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

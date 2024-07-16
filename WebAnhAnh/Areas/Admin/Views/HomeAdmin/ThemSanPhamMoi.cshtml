@@ -2,48 +2,64 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "ThemSanPhamMoi";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
 }
-
+<div class="container">
 <h1 style="text-align: center;">THÊM SẢN PHẨM MỚI</h1>
 
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form method="post" asp-action="ThemSanPhamMoi">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductName" class="control-label">TÊN SẢN PHẨM</label>
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ProductName" class="control-label">TÊN SẢN PHẨM</label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label">GIÁ BÁN</label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="CategoryId" class="control-label">LOẠI SẢN PHẨM</label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    </div>
+                </div>
+               
             </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label">LOẠI SẢN PHẨM</label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-           
-            <div class="form-group">
-                <label asp-for="Price" class="control-label">GIÁ BÁN</label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
+
+            <div class="row">
+                <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Image" class="control-label">ẢNH CHÍNH</label>
                 <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
+                </div>
+                <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Image1" class="control-label">ẢNH PHỤ 1</label>
                 <input type="file" asp-for="Image1" class="form-control" />
                 <span asp-validation-for="Image1" class="text-danger"></span>
-            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="Image2" class="control-label">ẢNH PHỤ 2</label>
                 <input type="file" asp-for="Image2" class="form-control" />
                 <span asp-validation-for="Image2" class="text-danger"></span>
             </div>
-
+                </div>
+            </div>
 @*             <div class="form-group">
                 <label asp-for="DateOfManufacture" class="control-label"></label>
                 <input asp-for="DateOfManufacture" class="form-control" />
@@ -64,6 +80,6 @@
         </form>
     </div>
 </div>
-
+</div>
 
 

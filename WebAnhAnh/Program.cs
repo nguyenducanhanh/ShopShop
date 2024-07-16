@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Helpers;
 using WebAnhAnh.Models;
+using WebAnhAnh.Repository;
 using WebAnhAnh.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddScoped<CustomerService>();
-
+builder.Services.AddScoped<CommentRepository>();
 // https://docs.automapper.org/en/stable/Dependency-injection.html
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 

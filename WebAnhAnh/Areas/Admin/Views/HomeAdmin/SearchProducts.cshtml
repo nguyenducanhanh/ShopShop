@@ -1,0 +1,199 @@
+﻿@using WebAnhAnh.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.BasePagedList<Product>
+@{
+    ViewData["Title"] = "SearchProducts";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminn.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>SearchProducts</h1>
+
+<p style="text-align: right;">
+    <a class="btn btn-primary" asp-action="ThemSanPhamMoi">THÊM MỚI</a>
+</p>
+
+
+<p>@TempData["Message"]</p>
+<table class="table mt-4">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                Tên Sản Phẩm
+            </th>
+            <th>
+                Giá
+            </th>
+            <th style="width:200px">
+                Ảnh Chính
+            </th>
+
+            <th scope="col">
+                Mô tả
+            </th>
+            <th>
+                Loại Sản Phẩm
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+            <tr class="@cls">
+                <td style="max-width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                    @item.ProductName
+                </td>
+                <td>
+                    @string.Format("{0:#,##0}", item.Price) vnd
+                </td>
+                <td>
+                    <img style="height:80px;width:100px;border-radius:20px;" src="~/images/@item.Image" alt="Image">
+                </td>
+
+                <td style="max-width: 300px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                    @item.Describe
+                </td>
+                <td>
+                    @item.Category.CategoryName
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Edit and Delete">
+                        <a class="btn btn-primary" asp-action="SuaSanPham" asp-route-id="@item.ProductId">SỬA</a>
+                        <form id="deleteForm-@item.ProductId" asp-action="XoaSanPham" asp-route-id="@item.ProductId" method="post">
+                            <button type="button" onclick="confirmDelete(@item.ProductId)" class="btn btn-danger">XÓA</button>
+                        </form>
+                    </div>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+@*     <div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("ListProducts", new { page = page }))
+                </div>
+ *@
+
+<script>
+    function confirmDelete(productId) {
+        if (confirm('CHẮC CHẮN XÓA ??')) {
+            document.getElementById('deleteForm-' + productId).submit();
+        }
+    }
+</script>
+
+
+<br />
+
+@* <div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("ListProducts", new { page = Model.HasPreviousPage ? Model.PageNumber - 1 : 1 })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int ii = 1; ii <= Model.PageCount; ii++)
+            {
+                <li class="page-item @(ii == Model.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("ListProducts", new { page = ii })">@ii</a>
+                </li>
+            }
+            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                <a class="page-link" href="@Url.Action("ListProducts", new { page = Model.HasNextPage ? Model.PageNumber + 1 : Model.PageCount })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div> *@
+
+
+
+<a data-bs-toggle="modal" data-bs-target="#searchModalll"><img src="~/images/search-icon.png"></a>
+
+
+@* <!-- Modal Search Start -->
+
+<div class="modal fade" id="searchModalll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Search by products</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="SearchForm" asp-action="Search" asp-controller="Product">
+                <div class="input-group w-100 mx-auto d-flex">
+                    <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="searchButton" name="query" id="searchText">
+                    <span id="searchButton" class="input-group-text p-3" onclick="SearchForm.submit()"><img src="~/images/search-icon.png"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Search End --> *@
+
+
+
+<style>
+    .pagination {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+        .pagination li {
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .pagination .page-item {
+            margin: 0 2px;
+        }
+
+            .pagination .page-item.disabled .page-link {
+                color: #6c757d;
+                pointer-events: none;
+                cursor: auto;
+            }
+
+            .pagination .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+        .pagination .page-link {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: #007bff;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+            .pagination .page-link:hover {
+                z-index: 2;
+                color: #0056b3;
+                text-decoration: none;
+                background-color: #e9ecef;
+                border-color: #dee2e6;
+            }
+
+</style>

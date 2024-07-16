@@ -53,7 +53,7 @@
                 @item.ProductName
             </td>
             <td>
-                @item.Price
+                    @string.Format("{0:#,##0}", item.Price) vnd
             </td>
                 <td >
                     <img style="height:80px;width:100px;border-radius:20px;" src="~/images/@item.Image" alt="Image">
@@ -134,7 +134,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Search by products</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form name="SearchForm" asp-action="Search" asp-controller="Product">
+            <form name="SearchForm" asp-action="SearchProducts" asp-controller="HomeAdmin">
                 <div class="input-group w-100 mx-auto d-flex">
                     <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="searchButton" name="query" id="searchText">
                     <span id="searchButton" class="input-group-text p-3" onclick="SearchForm.submit()"><img src="~/images/search-icon.png"></span>

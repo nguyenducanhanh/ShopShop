@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<WebAnhAnh.Repository.MenuCategoryRepository>
+
+            
+
+
+
+                    @foreach (var item in Model)
+                    {
+                           
+
+    <a asp-controller="Product" asp-action="Index" asp-route-category="@item.CategoryId" class="dropdown-item">@item.CategoryName (@item.Quantity)</a>
+    
+
+                    }
+  

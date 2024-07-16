@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Xml.Linq;
+using WebAnhAnh.Helpers;
 using WebAnhAnh.Models;
 using WebAnhAnh.Repository;
 
@@ -8,10 +12,13 @@ namespace WebAnhAnh.Controllers
     public class ProductController : Controller
     {
         private readonly ShopShopContext db;
-
-        public ProductController(ShopShopContext conetxt)
+        private readonly CommentRepository commentRepo;
+        
+        public ProductController(ShopShopContext context, CommentRepository commentRepository)
         {
-            db = conetxt;
+            db = context;
+            commentRepo = commentRepository;
+      
         }
 
 
@@ -71,35 +78,145 @@ namespace WebAnhAnh.Controllers
             return View(result);
         }
 
+        //public IActionResult DetailProduct(int id)
+        //{
+        //    var data = db.Products
+        //        .Include(p => p.Category)
+        //        .SingleOrDefault(p => p.ProductId == id);
+        //    if (data == null)
+        //    {
+        //        TempData["Message"] = $"Không thấy sản phẩm có mã {id}";
+        //        return Redirect("/404");
+        //    }
+
+        //    var result = new DetailProductsRepository
+        //    {
+        //        ProductID = data.ProductId,
+        //        ProductName = data.ProductName,
+        //        Price = data.Price ?? 0,
+        //        Image = data.Image ?? string.Empty,
+        //        Image1 = data.Image1 ?? string.Empty,
+        //        Image2 = data.Image2 ?? string.Empty,
+        //        Describe = data.Describe ?? string.Empty,
+        //        CategoryName = data.Category.CategoryName,
+        //        SoLuongTon = 10,//tính sau
+        //        DiemDanhGia = 5,//check sau
+
+        //    };
+        //    return View(result);
+        //}
+
         public IActionResult DetailProduct(int id)
         {
-            var data = db.Products
+            var product = db.Products
                 .Include(p => p.Category)
                 .SingleOrDefault(p => p.ProductId == id);
-            if (data == null)
+
+            if (product == null)
             {
-                TempData["Message"] = $"Không thấy sản phẩm có mã {id}";
+                TempData["Message"] = $"Không tìm thấy sản phẩm có mã {id}";
                 return Redirect("/404");
             }
 
-           var result = new DetailProductsRepository
-           {
-              ProductID = data.ProductId,
-               ProductName = data.ProductName,
-              Price = data.Price ?? 0,
-               Image = data.Image ?? string.Empty,
-               Image1 = data.Image1 ?? string.Empty,
-               Image2 = data.Image2 ?? string.Empty,
-               Describe = data.Describe ?? string.Empty,
-              CategoryName = data.Category.CategoryName,
-              SoLuongTon = 10,//tính sau
-              DiemDanhGia = 5,//check sau
-          };
-            return View(result);
+            var viewModel = new DetailProductsRepository
+            {
+                ProductID = product.ProductId,
+                ProductName = product.ProductName,
+                Price = product.Price ?? 0,
+                Image = product.Image ?? string.Empty,
+                Image1 = product.Image1 ?? string.Empty,
+                Image2 = product.Image2 ?? string.Empty,
+                Describe = product.Describe ?? string.Empty,
+                CategoryName = product.Category.CategoryName,
+                SoLuongTon = 10, // Giá trị thực hiện sau khi xác định
+                DiemDanhGia = 5 // Giá trị thực hiện sau khi xác định
+            };
+
+            var comments = db.Comments
+                .Where(c => c.ProductId == id)
+                .Include(c => c.Customer)
+                .Select(c => new CommentRepository
+                {
+                    CustomerName = c.Customer.CustomerName,
+                    CommentText = c.CommentText,
+                  //  CommentDate = c.Date
+                })
+                .ToList();
+
+            ViewBag.Comments = comments;
+
+            return View(viewModel);
         }
 
-      
+
+        //[HttpPost]
+        //public IActionResult AddComment(int productId, string commentText)
+        //{
+        //    // Lấy thông tin người dùng hiện tại
+
+        //    var userId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID).Value;
+
+        //    // Tạo đối tượng Comment mới
+        //    var comment = new Comment
+        //    {
+        //        ProductId = productId,
+
+        //        CommentText = commentText,
+        //        CustomerId = userId,
+        //        //  CommentDate = DateTime.Now // Set the current date and time
+        //    };
+
+        //    // Thêm Comment vào cơ sở dữ liệu
+        //    db.Comments.Add(comment);
+        //    db.SaveChanges();
+
+        //    // Chuyển hướng người dùng về trang chi tiết sản phẩm
+        //    return RedirectToAction("DetailProduct", new { id = productId });
+        //}
+
+
+
+
+        [HttpPost]
+        public IActionResult AddComment(int productId, string commentText)
+        {
+            // Check if the user is authenticated
+            if (!User.Identity.IsAuthenticated)
+            {
+                TempData["Message"] = "Bạn phải đăng nhập mới được bình luận.";
+                return RedirectToAction("DetailProduct", new { id = productId });
+            }
+
+            // Get the current user's ID
+            var userId = HttpContext.User.Claims.SingleOrDefault(p => p.Type == Val.CLAIM_CUSTOMERID)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                TempData["Message"] = "Lỗi khi lấy thông tin người dùng.";
+                return RedirectToAction("DetailProduct", new { id = productId });
+            }
+
+            // Create a new Comment object
+            var comment = new Comment
+            {
+                ProductId = productId,
+                CustomerId = userId,
+                CommentText = commentText,
+                // CommentDate = DateTime.Now // Set the current date and time
+            };
+
+            // Add the comment to the database
+            db.Comments.Add(comment);
+            db.SaveChanges();
+
+            // Redirect the user back to the product details page
+            return RedirectToAction("DetailProduct", new { id = productId });
+        }
 
 
     }
+
+
 }
+
+

@@ -8,7 +8,7 @@
 <!-- Checkout Page Start -->
 <div class="container-fluid py-5">
 	<div class="container py-5">
-		<h1 class="mb-4">PHƯƠNG THỨC NHẬN HÀNG</h1>
+		<h1 class="mb-4">ĐẶT HÀNG - THANH TOÁN </h1>
 		<form asp-action="Checkout" asp-controller="Cart">
 			<div class="row g-5">
 				<div class="col-md-12 col-lg-6 col-xl-7">
@@ -24,6 +24,10 @@
 						<label class="form-label my-3">Địa chỉ nhận hàng<sup>*</sup></label>
 						<input type="text" name="Address" class="form-control" placeholder="123 Lê Lợi, Quận 1">
 					</div>
+			
+
+
+
 					<div class="form-item delivery-info">
 						<label class="form-label my-3">Điện thoại<sup>*</sup></label>
 						<input type="text" name="PhoneNumber" class="form-control">
@@ -60,7 +64,7 @@
 										<td class="py-5">@item.ProductName</td>
 										<td class="py-5">$@item.Price</td>
 										<td class="py-5">@item.Quantity</td>
-										<td class="py-5">@item.TotalPayment</td>
+										<td class="py-5">  @item.TotalPayment.ToString("N0")</td>
 									</tr>
 								}
 								<tr>
@@ -139,4 +143,7 @@
 			}
 		}).render('#paypal-button-container');
 	</script>
-}
+
+
+
+} 	

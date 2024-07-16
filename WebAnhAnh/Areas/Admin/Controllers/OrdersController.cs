@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebAnhAnh.Models;
+using WebAnhAnh.Repository;
 using X.PagedList;
 
 namespace WebAnhAnh.Areas.Admin.Controllers
@@ -99,6 +100,7 @@ namespace WebAnhAnh.Areas.Admin.Controllers
             // Lấy các chi tiết của hóa đơn từ bảng OrderDetail
             var orderDetails = await _context.OrderDetailIds
                 .Include(od => od.Product) // Nếu có các thông tin của sản phẩm bạn muốn hiển thị
+               .Include(od => od.Order)
                 .Where(od => od.OrderId == id)
                 .ToListAsync();
 

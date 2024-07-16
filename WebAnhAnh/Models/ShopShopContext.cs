@@ -17,6 +17,8 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Comment> Comments { get; set; }
+
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<Link> Links { get; set; }
@@ -27,12 +29,14 @@ public partial class ShopShopContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<Rating> Ratings { get; set; }
+
     public virtual DbSet<Status> Statuses { get; set; }
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
     public virtual DbSet<WebsiteInformation> WebsiteInformations { get; set; }
-   
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=MACBOOK\\SQLEXPRESS;Initial Catalog=ShopShop;Persist Security Info=True;User ID=sa;Password=12345;Encrypt=True;Trust Server Certificate=True");
@@ -46,6 +50,24 @@ public partial class ShopShopContext : DbContext
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(50);
             entity.Property(e => e.Image).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.ToTable("Comment");
+
+            entity.Property(e => e.CustomerId)
+                .HasMaxLength(20)
+                .HasColumnName("CustomerID");
+            entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+            entity.HasOne(d => d.Customer).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.CustomerId)
+                .HasConstraintName("FK_Comment_Customer");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_Comment_Product");
         });
 
         modelBuilder.Entity<Customer>(entity =>
@@ -140,6 +162,24 @@ public partial class ShopShopContext : DbContext
             entity.HasOne(d => d.Supplier).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SupplierId)
                 .HasConstraintName("FK_Product_Supplier");
+        });
+
+        modelBuilder.Entity<Rating>(entity =>
+        {
+            entity.ToTable("Rating");
+
+            entity.Property(e => e.CustomerId)
+                .HasMaxLength(20)
+                .HasColumnName("CustomerID");
+            entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+            entity.HasOne(d => d.Customer).WithMany(p => p.Ratings)
+                .HasForeignKey(d => d.CustomerId)
+                .HasConstraintName("FK_Rating_Customer");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.Ratings)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_Rating_Product");
         });
 
         modelBuilder.Entity<Status>(entity =>

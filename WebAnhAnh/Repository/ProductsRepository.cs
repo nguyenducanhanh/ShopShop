@@ -29,5 +29,8 @@ namespace WebAnhAnh.Repository
       
         public int DiemDanhGia { get; set; }
         public int SoLuongTon { get; set; }
+        public List<CommentRepository> Comments { get; set; } = new List<CommentRepository>(); // Thêm thuộc tính này
+
+
     }
 }

@@ -29,7 +29,11 @@ public partial class Product
 
     public virtual Category? Category { get; set; }
 
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     public virtual ICollection<OrderDetailId> OrderDetailIds { get; set; } = new List<OrderDetailId>();
+
+    public virtual ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 
     public virtual Supplier? Supplier { get; set; }
 }

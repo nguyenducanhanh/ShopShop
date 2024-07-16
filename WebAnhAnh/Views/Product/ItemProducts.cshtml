@@ -12,8 +12,8 @@
                 <img style="height:130px;border-radius:5px;weight:100px" src="~/images/@item.Image"> 
                 </a>
                 <p href="/"><h4 style="color:gray">@item.ProductName</h4></p>
+                <p style="color:gray" class="fs-5 fw-bold mb-0">$@item.Price.ToString("N0")</p>
               
-                <p style="color:gray" class=" fs-5 fw-bold mb-0">$@item.Price</p>
                 <a style="color:gray" asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ProductID" class="btn border border-secondary rounded-pill px-3 ">Add to card</a>
             </div> 
         </div> 
@@ -81,9 +81,7 @@
     <div class="container">
         <h1 class="watchs_taital">Cửa Hàng Chúng Tôi</h1>
         <div class="testimonial_section_2">
-            <div class="box_main">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/8-UsY1gOOsE" frameborder="0" allowfullscreen></iframe>
-            </div>
+           
         </div>
         <div id="scrollToTop" class="seemore_bt_1"><a>&#9650;</a></div>
     </div>

@@ -32,12 +32,19 @@ namespace WebAnhAnh.Controllers
 			if (ModelState.IsValid)
 			{
 				try
-				{
-					var khachHang = _mapper.Map<Customer>(model);
+                {   // Kiểm tra xem CustomerId đã tồn tại trong cơ sở dữ liệu hay chưa
+                    var existingCustomer = db.Customers.FirstOrDefault(c => c.CustomerId == model.CustomerId);
+                    if (existingCustomer != null)
+                    {
+                        ModelState.AddModelError("CustomerId", "Tên đăng nhập đã tồn tại. Vui lòng chọn một tên khác.");
+                        return View(model); // Trả về view với thông báo lỗi
+                    }
+                    // Nếu không có tài khoản nào sử dụng CustomerId này, tiến hành đăng ký
+                    var khachHang = _mapper.Map<Customer>(model);
 					khachHang.RandomKey = MyUtil.GenerateRamdomKey();
 					khachHang.PassWord = model.PassWord.ToMd5Hash(khachHang.RandomKey);
-					khachHang.Effect = true;//sẽ xử lý khi dùng Mail để active
-                    khachHang.IsAdmin = true;
+					khachHang.Effect = true;
+                  //  khachHang.IsAdmin = true;
                     khachHang.Role = 0;
 					db.Add(khachHang);
 					db.SaveChanges();
@@ -142,9 +149,9 @@ namespace WebAnhAnh.Controllers
         }
 
 
-        
 
-        [Authorize(Roles = "Admin")]    // chưa đăng nhập ko đc vô trang này 
+        [Authorize]
+     /*   [Authorize(Roles = "Admin")] */   // chưa đăng nhập ko đc vô trang này 
         public IActionResult Profile()
         {
             return View();
@@ -163,5 +170,7 @@ namespace WebAnhAnh.Controllers
         {
             return db.Customers.Count();
         }
+
+
     }
 }

@@ -524,7 +524,6 @@ E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.Encoding.CodePages.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.Encoding.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.Encoding.Extensions.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.Encodings.Web.dll
-E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.Json.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Text.RegularExpressions.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Threading.Channels.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\refs\System.Threading.dll
@@ -562,3 +561,4 @@ E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.Dependen
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\X.PagedList.Web.Common.dll
+E:\WebAnhAnh\WebAnhAnh\bin\Debug\net8.0\System.Text.Json.dll

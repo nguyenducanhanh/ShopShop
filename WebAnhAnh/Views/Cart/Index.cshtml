@@ -39,7 +39,7 @@
 								</p>
 							</td>
 							<td>
-								<p class="mb-0 mt-4">$ @item.Price</p>
+								<p class="mb-0 mt-4">$ @item.Price.ToString("N0")</p>
 							</td>
 							<td>
 								<div class="input-group quantity mt-4" style="width: 100px;">
@@ -57,7 +57,7 @@
 								</div>
 							</td>
 							<td>
-								<p class="mb-0 mt-4">$ @item.TotalPayment</p>
+								<p class="mb-0 mt-4"> @item.TotalPayment.ToString("N0")</p>
 							</td>
 							<td>
 								<a asp-action="RemoveCart" asp-controller="Cart" asp-route-id="@item.ProductID" class="btn btn-md rounded-circle bg-light border mt-4">
@@ -82,7 +82,9 @@
 						<h1 class="display-6 mb-4">Giỏ hàng <span class="fw-normal">Tổng </span></h1>
 						<div class="d-flex justify-content-between mb-4">
 							<h5 class="mb-0 me-4">Tổng tiền:</h5>
-							<p class="mb-0">$@Model.Sum(p => p.TotalPayment)</p>
+						
+							<p class="mb-0">$@Model.Sum(p => p.TotalPayment).ToString("N0")</p>
+
 						</div>
 						<div class="d-flex justify-content-between">
 							<h5 class="mb-0 me-4">Phí giao hàng</h5>
@@ -93,8 +95,7 @@
 						<p class="mb-0 text-end">Nhận hàng sau 1 tuần</p>
 					</div>
 					<div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-						<h5 class="mb-0 ps-4 me-4">Tổng phải trả</h5>
-						<p class="mb-0 pe-4">$@Model.Sum(p => p.TotalPayment)</p>
+						<p class="mb-0">$@Model.Sum(p => p.TotalPayment).ToString("N0")</p>
 					</div>
 					<a class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" asp-action="Checkout" asp-controller="Cart">Trang Thanh Toán</a>
 
